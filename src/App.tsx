@@ -1,8 +1,8 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import { Pathway, StatsBand, Way } from "./components/Sections";
+import { Academy, Steps } from "./components/Sections";
 import { Programs, Schedule } from "./components/Programs";
-import { Coaches, Results } from "./components/People";
+import { Community, Leadership } from "./components/People";
 import { Gallery, News, Testimonials } from "./components/News";
 import Trials from "./components/Trials";
 import Footer from "./components/Footer";
@@ -14,13 +14,12 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <StatsBand />
-        <Way />
+        <Academy />
         <Programs />
         <Schedule />
-        <Pathway />
-        <Coaches />
-        <Results />
+        <Steps />
+        <Leadership />
+        <Community />
         <Testimonials />
         <News />
         <Gallery />

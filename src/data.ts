@@ -1,341 +1,314 @@
+const GEN = "https://image.qwenlm.ai/generated-images";
+
 export const IMG = {
-  hero: "https://image.qwenlm.ai/generated-images/e5c91cfd-8120-49bb-aeab-4ab1ad112f48/_result.png",
-  drill: "https://image.qwenlm.ai/generated-images/2d1c9046-6c7c-4e0f-bbfa-f3e4ee4cf53c/_result.png",
-  keeper: "https://image.qwenlm.ai/generated-images/8fa72442-1671-42a1-b319-6aa9ee3e19f5/_result.png",
-  coach1: "https://image.qwenlm.ai/generated-images/a68f31d2-69dd-4bcf-b053-7bec0c20c873/_result.png",
-  coach2: "https://image.qwenlm.ai/generated-images/f52f5a33-ab09-4932-876f-18fc0c7228b2/_result.png",
-  coach3: "https://image.qwenlm.ai/generated-images/cde1429c-b66f-417d-b5ef-e839601d01ba/_result.png",
-  pitch: "https://image.qwenlm.ai/generated-images/7c88997c-cf4b-4b24-bc9b-b3a7f2bfb2ae/_result.png",
-  match: "https://image.qwenlm.ai/generated-images/20c150da-293f-4a63-a428-e73fc37e9789/_result.png",
+  // Real assets from ahenkanfootballacademy.com
+  logo: "https://ahenkanfootballacademy.com/logo.jpg",
+  flag: "https://ahenkanfootballacademy.com/Flag.jpg",
+  team: "https://ahenkanfootballacademy.com/team_staff.jpg",
+  president: "https://ahenkanfootballacademy.com/Odi-ahenkan.jpg",
+  patron: "https://ahenkanfootballacademy.com/Okyen-hene.jpg",
+  fundraiser: "https://ahenkanfootballacademy.com/thumbnail1.png",
+  // Editorial photography
+  hero: `${GEN}/e5c91cfd-8120-49bb-aeab-4ab1ad112f48/_result.png`,
+  drill: `${GEN}/2d1c9046-6c7c-4e0f-bbfa-f3e4ee4cf53c/_result.png`,
+  keeper: `${GEN}/8fa72442-1671-42a1-b319-6aa9ee3e19f5/_result.png`,
+  pitch: `${GEN}/7c88997c-cf4b-4b24-bc9b-b3a7f2bfb2ae/_result.png`,
+  match: `${GEN}/20c150da-293f-4a63-a428-e73fc37e9789/_result.png`,
+};
+
+export const CONTACT = {
+  phone: "+233 24 471 2689",
+  phoneHref: "tel:+233244712689",
+  altPhone: "0244 868 592",
+  email: "info@ahenkanacademy.com",
+  address: "Adeiso, Upper West Akyem",
+  region: "Eastern Region, Ghana",
+  facebook: "https://www.facebook.com/p/Ahenkan-Football-Academy-61571776081864/",
+  site: "https://ahenkanfootballacademy.com",
 };
 
 export const NAV = [
-  { label: "The Way", href: "#way" },
+  { label: "The Academy", href: "#academy" },
   { label: "Programs", href: "#programs" },
-  { label: "Schedule", href: "#schedule" },
-  { label: "Coaches", href: "#coaches" },
-  { label: "Results", href: "#results" },
+  { label: "Leadership", href: "#leadership" },
+  { label: "Community", href: "#community" },
   { label: "News", href: "#news" },
 ];
 
-export const STATS = [
-  { value: 340, suffix: "+", label: "Active players", note: "across six age groups" },
-  { value: 27, suffix: "", label: "Pro contracts", note: "Ghana & abroad since 2014" },
-  { value: 14, suffix: "", label: "National call-ups", note: "Black Starlets & maidens" },
-  { value: 9, suffix: "", label: "Licensed coaches", note: "CAF / GFA badge holders" },
+export const TICKER = [
+  "Talent",
+  "Wisdom",
+  "Knowledge",
+  "Discipline",
+  "Community",
+  "Excellence",
+  "Developing Ghana's Future Stars",
 ];
 
-export const PILLARS = [
+export const STATS = [
+  { value: 50, suffix: "+", label: "Young Players" },
+  { value: 5, suffix: "+", label: "Expert Coaches" },
+  { value: 100, suffix: "%", label: "Dedication" },
+  { value: 2025, suffix: "", label: "Founded in Adeiso" },
+];
+
+export const WHY: { title: string; desc: string; icon: string }[] = [
   {
-    no: "01",
-    icon: "target",
-    title: "Technical Excellence",
-    body: "Daily ball-mastery, 1v1 dominance and positional play taught the Ahenkan way — 4,000+ touches a week before a player turns thirteen.",
+    title: "Academic Excellence",
+    desc: "We ensure our players maintain high academic standards alongside their football training, preparing them for success in all areas of life.",
+    icon: "academic",
   },
   {
-    no: "02",
-    icon: "book",
-    title: "Education First",
-    body: "Every scholar is a student. Homework clubs, SHS placement support and a strict 'no pass, no play' rule sit beside every training block.",
+    title: "Character Development",
+    desc: "Building strong character, leadership skills, and moral values that will serve our players throughout their lives.",
+    icon: "character",
   },
   {
-    no: "03",
-    icon: "shield",
-    title: "Character & Culture",
-    body: "Discipline, humility and brotherhood. Captains rotate monthly, seniors mentor juniors, and every squad cleans its own pitch after sessions.",
+    title: "Safe Environment",
+    desc: "Providing a secure, supportive environment where young players can grow, learn, and develop their potential safely.",
+    icon: "safe",
   },
   {
-    no: "04",
-    icon: "eye",
-    title: "Real Exposure",
-    body: "GFA youth leagues, international showcases and a verified video portfolio for every U17 player — scouted on merit, never on payment.",
+    title: "Flexible Training",
+    desc: "Training schedules that accommodate school hours and family commitments, ensuring balanced development.",
+    icon: "flexible",
+  },
+  {
+    title: "Community Focus",
+    desc: "Strong emphasis on community involvement and giving back, teaching players the importance of social responsibility.",
+    icon: "community",
+  },
+  {
+    title: "Competitive Edge",
+    desc: "Regular participation in local and regional tournaments to develop competitive skills and match experience.",
+    icon: "competitive",
+  },
+  {
+    title: "Life Skills",
+    desc: "Teaching essential life skills including time management, teamwork, communication, and problem-solving.",
+    icon: "life",
+  },
+  {
+    title: "Global Perspective",
+    desc: "Exposure to international football standards and opportunities for players to compete at higher levels.",
+    icon: "global",
+  },
+];
+
+export const LEADERS = [
+  {
+    name: "Odi – Ahenkan Kwame Yeboah",
+    role: "President",
+    img: IMG.president,
+    bio: "Leading the academy with vision and dedication, ensuring our players receive the best opportunities for growth both on and off the field.",
+    note: "Founder's Vision",
+  },
+  {
+    name: "His Royal Majesty Osagyefo Amoatia Ofori Payin",
+    role: "Okyenhene · Life Patron",
+    img: IMG.patron,
+    bio: "Providing guidance and support as the Life Patron, embodying the traditional values and cultural heritage that define our academy's foundation.",
+    note: "Royal Patronage",
   },
 ];
 
 export const PROGRAMS = [
   {
-    id: "grassroots",
-    no: "01",
-    name: "Grassroots",
-    ages: "Ages 6–9",
-    tag: "Foundation",
-    desc: "Where the miracle starts. Fun-first sessions built on ball mastery, coordination and falling in love with the game — small groups, big smiles.",
-    meta: [
-      ["Sessions", "Mon · Wed · Fri, 15:30"],
-      ["Venue", "Mini-pitch, Ahenkan Grounds"],
-      ["Squad size", "14 per coach"],
-      ["Monthly fee", "GH₵ 150"],
-    ],
-    focus: ["Ball mastery & two-footedness", "Agility and movement ABCs", "Small-sided games 3v3–5v5"],
-  },
-  {
-    id: "development",
-    no: "02",
-    name: "Development",
-    ages: "Ages 10–13",
-    tag: "Learning to train",
-    desc: "The technical core of the academy. Positional foundations, structured rondo culture and game intelligence developed through deliberate practice.",
-    meta: [
-      ["Sessions", "Mon–Thu, 15:30–17:30"],
-      ["Venue", "Pitch A & B, Ahenkan Grounds"],
-      ["Squad size", "18 per squad"],
-      ["Monthly fee", "GH₵ 200"],
-    ],
-    focus: ["Rondos & positional play", "First touch under pressure", "GFA Colts league fixtures"],
-  },
-  {
     id: "youth",
-    no: "03",
-    name: "Youth Competitive",
-    ages: "Ages 14–17",
-    tag: "Learning to compete",
-    desc: "GFA Greater Accra Youth League squads with full performance support — video analysis, strength & conditioning and matchday routine.",
-    meta: [
-      ["Sessions", "Mon–Fri, 16:00 + Sat matchday"],
-      ["Venue", "Pitch A, Ahenkan Grounds"],
-      ["Squad size", "22 per squad"],
-      ["Monthly fee", "GH₵ 250"],
+    no: "01",
+    name: "Youth Development Programs",
+    tag: "Core Academy",
+    ages: "Ages 6–17",
+    desc: "Our flagship pathway — premier youth development built on daily technical training, tactical education and schooling support, so every player grows as a footballer and a student.",
+    focus: [
+      "Technical & tactical development in age-group squads",
+      "Academic support scheduled around every session",
+      "Local & regional tournament match experience",
+      "Mentorship from licensed coaches, 9am – 3pm daily",
     ],
-    focus: ["11v11 tactical periodisation", "Individual video review", "League & cup competition"],
+    meta: [
+      ["Venue", "Ahenkan Grounds, Adeiso"],
+      ["Sessions", "Mon – Sat · 09:00 – 15:00"],
+      ["Schooling", "Lessons built into the week"],
+      ["Intake", "Open all year round"],
+    ],
   },
   {
     id: "elite",
-    no: "04",
-    name: "Elite Pathway",
-    ages: "Ages 18–21",
-    tag: "Learning to win",
-    desc: "An invitational bridge to the professional game: pro-standard training loads, trial placement with Ghana Premier League and foreign clubs, and agent-free career guidance.",
-    meta: [
-      ["Sessions", "2× daily, Mon–Sat"],
-      ["Venue", "Ahenkan Grounds + gym partner"],
-      ["Squad size", "16 by invitation"],
-      ["Monthly fee", "Scholarship / waived"],
+    no: "02",
+    name: "Elite Training Camps",
+    tag: "Performance",
+    ages: "Ages 13–18",
+    desc: "High-intensity camps for our most advanced players — double sessions, match analysis and exposure opportunities that prepare athletes for international football standards.",
+    focus: [
+      "Double-session blocks with recovery & nutrition",
+      "Video analysis and individual development plans",
+      "Showcase matches in front of scouts & partner clubs",
+      "Leadership training for future captains",
     ],
-    focus: ["GPL & overseas trial placement", "Performance analytics portfolio", "Nutrition & lifestyle mentoring"],
+    meta: [
+      ["Format", "Day & residential camps"],
+      ["Duration", "2-week intensive blocks"],
+      ["Exposure", "Scouts & partner clubs"],
+      ["Entry", "By trial · GH₵200"],
+    ],
   },
   {
-    id: "queens",
-    no: "05",
-    name: "Ahenkan Queens",
-    ages: "Girls 8–17",
-    tag: "Women's program",
-    desc: "Our fastest-growing program. Dedicated female coaching staff, GWPL pathway links and the same standards — and same pitch time — as the boys.",
-    meta: [
-      ["Sessions", "Tue · Thu · Sat"],
-      ["Venue", "Pitch B, Ahenkan Grounds"],
-      ["Squad size", "18 per squad"],
-      ["Monthly fee", "GH₵ 150"],
+    id: "community",
+    no: "03",
+    name: "Community Outreach",
+    tag: "Giving Back",
+    ages: "All Ages",
+    desc: "Football for everyone — free open days, school coaching visits across Upper West Akyem and community events like our fundraising ceremony that is expanding our facilities for the next generation.",
+    focus: [
+      "Free monthly open training days for all children",
+      "Coaching visits to schools across the Akyem area",
+      "Facility expansion drive — Building Dreams Together",
+      "Social responsibility programmes led by our players",
     ],
-    focus: ["GWPL Colts competition", "Girls-only development groups", "Female mentorship network"],
-  },
-  {
-    id: "gk",
-    no: "06",
-    name: "Goalkeeping Academy",
-    ages: "Ages 10–19",
-    tag: "Specialist",
-    desc: "Twice-weekly specialist unit under Daniel Ofori — shot-stopping, distribution and the mental craft of the loneliest position on the pitch.",
     meta: [
-      ["Sessions", "Wed & Sat, 07:00"],
-      ["Venue", "Pitch A, Ahenkan Grounds"],
-      ["Squad size", "6 keepers per coach"],
-      ["Monthly fee", "GH₵ 100 add-on"],
+      ["Open Days", "First Saturday monthly · Free"],
+      ["Schools", "Visits across Upper West Akyem"],
+      ["Fundraising", "Facility expansion underway"],
+      ["Motto", "“Building Dreams Together”"],
     ],
-    focus: ["Footwork & set positioning", "Distribution under press", "Match psychology routines"],
   },
 ];
 
-export type Session = { time: string; program: string; pitch: string };
-export const SCHEDULE: { day: string; note?: string; sessions: Session[] }[] = [
+export const SCHEDULE = [
   {
-    day: "Monday",
+    day: "Mon",
     sessions: [
-      { time: "15:30", program: "Grassroots", pitch: "Mini-pitch" },
-      { time: "15:30", program: "Development", pitch: "Pitch B" },
-      { time: "16:00", program: "Youth Comp.", pitch: "Pitch A" },
+      { time: "09:00", program: "Ball Mastery", pitch: "Main Ground" },
+      { time: "13:00", program: "Small-Sided Games", pitch: "Main Ground" },
     ],
   },
   {
-    day: "Tuesday",
+    day: "Tue",
     sessions: [
-      { time: "15:30", program: "Development", pitch: "Pitch B" },
-      { time: "16:00", program: "Youth Comp.", pitch: "Pitch A" },
-      { time: "16:00", program: "Queens", pitch: "Pitch B" },
+      { time: "09:00", program: "Physical Foundations", pitch: "Training Pitch" },
+      { time: "13:00", program: "Position Play", pitch: "Main Ground" },
     ],
   },
   {
-    day: "Wednesday",
+    day: "Wed",
+    note: "Study",
     sessions: [
-      { time: "07:00", program: "Goalkeepers", pitch: "Pitch A" },
-      { time: "15:30", program: "Grassroots", pitch: "Mini-pitch" },
-      { time: "16:00", program: "Youth Comp.", pitch: "Pitch A" },
+      { time: "09:00", program: "School Support", pitch: "Academy Hall" },
+      { time: "13:00", program: "Team Tactics", pitch: "Main Ground" },
     ],
   },
   {
-    day: "Thursday",
+    day: "Thu",
     sessions: [
-      { time: "15:30", program: "Development", pitch: "Pitch B" },
-      { time: "16:00", program: "Youth Comp.", pitch: "Pitch A" },
-      { time: "16:00", program: "Queens", pitch: "Pitch B" },
+      { time: "09:00", program: "Finishing & Striking", pitch: "Main Ground" },
+      { time: "13:00", program: "Match Simulation", pitch: "Main Ground" },
     ],
   },
   {
-    day: "Friday",
+    day: "Fri",
     sessions: [
-      { time: "15:30", program: "Grassroots", pitch: "Mini-pitch" },
-      { time: "16:00", program: "Youth Comp.", pitch: "Pitch A" },
-      { time: "17:30", program: "Elite", pitch: "Pitch A" },
+      { time: "09:00", program: "Set Pieces & GK Unit", pitch: "Training Pitch" },
+      { time: "13:00", program: "Recovery & Mobility", pitch: "Training Pitch" },
     ],
   },
   {
-    day: "Saturday",
+    day: "Sat",
     note: "Matchday",
     sessions: [
-      { time: "07:00", program: "Goalkeepers", pitch: "Pitch A" },
-      { time: "08:00", program: "Queens", pitch: "Pitch B" },
-      { time: "10:00", program: "Youth Comp.", pitch: "League fixture" },
+      { time: "09:00", program: "Team Activation", pitch: "Home or Away" },
+      { time: "13:00", program: "League Fixtures", pitch: "Local & Regional" },
     ],
   },
 ];
 
-export const COACHES = [
+export const STEPS = [
   {
-    name: "Kwame Mensah",
-    role: "Head of Coaching",
-    badge: "CAF A Licence",
-    img: IMG.coach1,
-    bio: "Former Asante Kotoko midfielder with 18 years on the touchline. Kwame built the Ahenkan curriculum from a chalkboard in 2014 and still takes the U17s every Saturday.",
-    creds: ["Ex-Asante Kotoko", "GFA Technical Committee", "340+ players developed"],
+    no: "01",
+    title: "Apply Online",
+    desc: "Complete the registration form below, or call our admissions team on +233 24 471 2689 and we will guide you through every step.",
   },
   {
-    name: "Abena Serwaa",
-    role: "Head of Women's Program",
-    badge: "GFA Licence A",
-    img: IMG.coach2,
-    bio: "Ex-Black Queens winger who founded the Ahenkan Queens in 2019. Her U15 side reached the national GWPL Colts semifinals in their second season.",
-    creds: ["Ex-Black Queens", "GWPL Colts semifinalist", "40+ girls in pathway"],
+    no: "02",
+    title: "Trial Day",
+    desc: "Join an open trial at our Adeiso grounds — 9am to 3pm. Registration fee is GH₵200. Bring your boots, your kit and your dream.",
   },
   {
-    name: "Daniel Ofori",
-    role: "Goalkeeping Coach",
-    badge: "GFA GK Diploma",
-    img: IMG.coach3,
-    bio: "Twelve seasons between the posts for Hearts of Oak. Daniel runs the specialist keeping unit that has produced three Ghana youth internationals.",
-    creds: ["Ex-Hearts of Oak", "3 youth internationals", "12 GPL seasons"],
+    no: "03",
+    title: "Join the Family",
+    desc: "Successful players are placed into an age-group squad with structured training, schooling support and dedicated mentorship.",
   },
-];
-
-export const PATHWAY = [
-  {
-    step: "01",
-    title: "Scout",
-    body: "Open trials across Greater Accra every quarter — free to enter, judged on potential not polish.",
-    icon: "cone",
-  },
-  {
-    step: "02",
-    title: "Foundation",
-    body: "Grassroots and Development blocks build technique, two-footedness and game love.",
-    icon: "ball",
-  },
-  {
-    step: "03",
-    title: "Compete",
-    body: "GFA Colts and Youth League football against the best academies in the country.",
-    icon: "whistle",
-  },
-  {
-    step: "04",
-    title: "Perform",
-    body: "Video analysis, S&C and nutrition wrap around training as players chase excellence.",
-    icon: "chart",
-  },
-  {
-    step: "05",
-    title: "Professional",
-    body: "GPL and overseas trial placement — 27 contracts signed since 2014.",
-    icon: "star",
-  },
-];
-
-export const RESULTS = [
-  { date: "21 Feb 2026", comp: "GFA U17 Youth League", score: "3–1", opp: "Accra Lions", res: "W" as const },
-  { date: "14 Feb 2026", comp: "GFA U15 Colts League", score: "2–2", opp: "Tema Youth", res: "D" as const },
-  { date: "08 Feb 2026", comp: "GFA U13 Colts League", score: "4–0", opp: "Danbort FC", res: "W" as const },
-  { date: "01 Feb 2026", comp: "GFA U17 Youth League", score: "1–2", opp: "Right to Dream", res: "L" as const },
-  { date: "25 Jan 2026", comp: "GWPL Colts · Queens U15", score: "2–1", opp: "Fabulous Ladies", res: "W" as const },
-  { date: "18 Jan 2026", comp: "GFA U11 Festival", score: "5–2", opp: "Spintex Knights", res: "W" as const },
 ];
 
 export const NEWS = [
   {
-    cat: "Match Report",
-    date: "21 Feb 2026",
-    title: "U17s seal top-two finish with statement win over Accra Lions",
+    title: "Ahenkan Academy Fundraising Ceremony: Building Dreams Together",
+    cat: "Community",
+    date: "Jan 19, 2024",
+    img: IMG.fundraiser,
+    featured: true,
+    excerpt:
+      "A memorable evening of community support as Ahenkan Football Academy successfully raised funds to expand our facilities and provide more opportunities for young Ghanaian footballers.",
+    full: "A memorable evening of community support as Ahenkan Football Academy successfully raised funds to expand our facilities and provide more opportunities for young Ghanaian footballers. Under the patronage of His Royal Majesty Osagyefo Amoatia Ofori Payin, families, friends and supporters from across Upper West Akyem came together for a night of celebration and generosity. Every cedi raised goes directly into new training facilities, equipment and scholarship places — because when the community builds together, dreams grow together.",
+  },
+  {
+    title: "The Future of Ghanaian Football: Developing Young Talent",
+    cat: "Development",
+    date: "Jan 14, 2024",
     img: IMG.match,
-    excerpt: "A second-half brace from skipper Selorm Agbeko and a thunderous free-kick sealed a 3–1 victory that keeps the title race alive heading into the final block.",
-    full: "Selorm Agbeko opened the scoring on 54 minutes with a composed finish after a 22-pass sequence, then doubled it from a free-kick that dipped over the wall. Accra Lions pulled one back from the spot, but substitute Kwabena Antwi killed the contest in stoppage time. The win keeps Ahenkan within two points of the summit with three games to play — and guarantees a top-two finish and CAF Youth Games qualification for the first time in academy history.",
+    featured: false,
+    excerpt:
+      "How structured youth development — from ball mastery to tactical intelligence — is shaping the next generation of Ghanaian champions right here in Adeiso.",
+    full: "Ghana has never lacked talent; what talent needs is a pathway. At Ahenkan, our youth development programs combine daily technical repetition, age-appropriate tactical education and real match experience in local and regional tournaments. The result is players who are not only skilful, but intelligent, disciplined and ready for every level the game can offer.",
   },
   {
-    cat: "Transfers",
-    date: "09 Feb 2026",
-    title: "Two Elite Pathway scholars sign pre-contracts with European clubs",
+    title: "Nutrition and Performance: Fueling Champions",
+    cat: "Health & Wellness",
+    date: "Jan 9, 2024",
     img: IMG.drill,
-    excerpt: "Midfielder Isaac Tetteh (18) and full-back Richard Asamoah (19) will join Danish and Belgian second-division sides in the summer window.",
-    full: "Both players joined the academy at age 11 through community trials in Ashaiman and Nungua. After two seasons in the Elite Pathway — including trial spells organised by the academy — they signed pre-contracts pending work permits. 'They leave as professionals and come back as brothers,' said Head of Coaching Kwame Mensah. The academy retains a development solidarity percentage that funds 40 grassroots scholarships each year.",
-  },
-  {
-    cat: "Academy",
-    date: "28 Jan 2026",
-    title: "2026 open trials: March dates announced for boys and Queens",
-    img: IMG.keeper,
-    excerpt: "Free entry for all players born 2009–2019. Trials run across two weekends at the Ahenkan Grounds on Spintex Road, with scouts from six GPL clubs invited.",
-    full: "The academy's flagship recruitment window returns on Saturday 14 March (boys U10–U17) and Sunday 15 March (Queens U10–U17). Entry is free — players register online or on the gate from 06:00. Every trialist receives written feedback, and standout players are invited into funded scholarship squads. Bring boots, shin guards, water and a plain white shirt. Goalkeepers report to the specialist tent at 06:45.",
+    featured: false,
+    excerpt:
+      "What our young athletes eat, drink and how they recover — inside the academy's approach to nutrition, hydration and rest for growing champions.",
+    full: "Champions are built as much in the kitchen as on the pitch. Our players learn the fundamentals of fueling — balanced local meals, smart hydration before and after sessions, and the discipline of rest and recovery. It is another example of how Ahenkan prepares young people for success in all aspects of life, not just football.",
   },
 ];
 
 export const TESTIMONIALS = [
   {
     quote:
-      "My son joined at eight, shy and raw. Six years later he captains the U15s, speaks in front of adults without shaking, and still finishes his homework before training. Ahenkan raises people, then footballers.",
-    name: "Mrs. Adwoa Boateng",
-    role: "Parent · Development squad",
+      "Ahenkan Academy has transformed my son's football skills and character. The coaches are dedicated and the training is world-class. I'm proud to see him grow both as a player and a person.",
+    name: "Kwame Asante",
+    role: "Parent of U-15 Player",
+    initials: "KA",
   },
   {
     quote:
-      "The coaches told me the truth when I wasn't ready, worked with me when I was, and put my tape in front of clubs I only knew from the TV. I signed my first pro contract at 19.",
-    name: "Isaac Tetteh",
-    role: "Alumni · Elite Pathway '26",
+      "The academy's commitment to community development is remarkable. They're not just training footballers, they're building future leaders who will make Ghana proud.",
+    name: "Sarah Mensah",
+    role: "Community Leader",
+    initials: "SM",
   },
   {
     quote:
-      "As a mother of a girl playing football in Ghana, I was nervous. The Queens program gave my daughter female coaches, real league games and a standard that says: you belong here.",
-    name: "Mr. & Mrs. Lartey",
-    role: "Parents · Queens U13",
+      "The holistic approach at Ahenkan Academy is exceptional. They understand that mental strength is as important as physical skills in developing champions.",
+    name: "Dr. Kofi Boateng",
+    role: "Sports Psychologist",
+    initials: "DKB",
+  },
+  {
+    quote:
+      "Training at Ahenkan Academy prepared me for success both on and off the field. The values I learned here continue to guide me in my professional career.",
+    name: "Ama Serwaa",
+    role: "Former Player",
+    initials: "AS",
   },
 ];
 
-export const TRIAL_DATES = [
-  { day: "Saturday", date: "14 March 2026", group: "Boys U10–U17", time: "07:00 – 11:00" },
-  { day: "Sunday", date: "15 March 2026", group: "Queens U10–U17", time: "07:00 – 11:00" },
-  { day: "Saturday", date: "28 March 2026", group: "Grassroots 6–9 yrs", time: "08:00 – 10:00" },
-];
-
-export const BRING = [
-  "Football boots (moulded studs) & shin guards",
-  "Plain white shirt and dark shorts",
-  "At least 1.5L of water",
-  "Signed parental consent form (emailed after registration)",
-];
-
-export const POSITIONS = [
-  "Goalkeeper",
-  "Right back",
-  "Centre back",
-  "Left back",
-  "Defensive midfield",
-  "Central midfield",
-  "Attacking midfield",
-  "Winger",
-  "Striker",
+export const SITE_LINKS = [
+  { label: "About Us", href: "https://ahenkanfootballacademy.com/about" },
+  { label: "Programs", href: "https://ahenkanfootballacademy.com/programs" },
+  { label: "Coaching Staff", href: "https://ahenkanfootballacademy.com/staff" },
+  { label: "Admissions", href: "https://ahenkanfootballacademy.com/admissions" },
+  { label: "Blog", href: "https://ahenkanfootballacademy.com/blog" },
+  { label: "Contact", href: "https://ahenkanfootballacademy.com/contact" },
 ];

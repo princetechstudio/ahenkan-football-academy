@@ -3,22 +3,25 @@ import { PROGRAMS, SCHEDULE } from "../data";
 import { Reveal, SectionHead } from "../lib";
 import { ArrowIcon, CheckIcon, ChevronIcon } from "./Icons";
 
-const TAG_COLORS: Record<string, string> = {
-  grassroots: "border-gold-600/50 text-gold-700",
-  development: "border-pitch-600/50 text-pitch-700",
-  youth: "border-clay-500/50 text-clay-500",
-  elite: "border-pitch-900/50 text-pitch-900",
-  queens: "border-[#d16ba0]/60 text-[#b04a80]",
-  gk: "border-[#4a7db5]/60 text-[#3a6694]",
+const TAG_STYLES: Record<string, string> = {
+  youth: "border-pitch-700/50 text-pitch-700 bg-pitch-700/8",
+  elite: "border-gold-600/60 text-gold-700 bg-gold-500/10",
+  community: "border-clay-500/50 text-clay-600 bg-clay-500/8",
 };
 
 const DOT_COLORS: Record<string, string> = {
-  Grassroots: "bg-gold-500",
-  Development: "bg-pitch-500",
-  "Youth Comp.": "bg-clay-400",
-  Elite: "bg-bone-300",
-  Queens: "bg-[#d16ba0]",
-  Goalkeepers: "bg-[#7ba3d4]",
+  "Ball Mastery": "bg-gold-500",
+  "Small-Sided Games": "bg-pitch-500",
+  "Physical Foundations": "bg-clay-400",
+  "Position Play": "bg-gold-500",
+  "School Support": "bg-bone-300",
+  "Team Tactics": "bg-pitch-500",
+  "Finishing & Striking": "bg-clay-400",
+  "Match Simulation": "bg-gold-500",
+  "Set Pieces & GK Unit": "bg-bone-300",
+  "Recovery & Mobility": "bg-pitch-500",
+  "Team Activation": "bg-gold-500",
+  "League Fixtures": "bg-clay-400",
 };
 
 export function Programs() {
@@ -27,24 +30,25 @@ export function Programs() {
   return (
     <section id="programs" className="relative bg-bone-100 py-24 text-pitch-900 lg:py-32">
       <span
-        className="text-outline-dark pointer-events-none absolute right-0 top-6 select-none font-display text-[20vw] uppercase leading-none opacity-60 lg:text-[200px]"
+        className="text-outline-dark pointer-events-none absolute right-0 top-6 select-none font-display text-[19vw] uppercase leading-none opacity-60 lg:text-[200px]"
         aria-hidden="true"
       >
         Programs
       </span>
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHead
             dark
-            kicker="Six pathways, one standard"
+            kicker="Talent, Wisdom and Knowledge at Work"
             title="Academy Programs"
-            sub="From a six-year-old's first session to an 18-year-old's pro trial — every age group trains on a structured, GFA-aligned curriculum."
+            sub="Premier football programs in Ghana — youth development, elite training camps and community outreach, all built around one mission: developing Ghana's future stars."
           />
           <Reveal delay={200}>
             <p className="mb-2 border-l-4 border-gold-500 bg-bone-50 px-4 py-3 text-sm font-semibold text-pitch-800">
-              Scholarships cover 1 in 3 players.
+              World-class coaches. World-class standards.
               <span className="block font-normal text-pitch-800/70">
-                No child is ever turned away for lack of funds.
+                Sessions run 9am – 3pm at our Adeiso grounds.
               </span>
             </p>
           </Reveal>
@@ -54,7 +58,7 @@ export function Programs() {
           {PROGRAMS.map((p, i) => {
             const open = openId === p.id;
             return (
-              <Reveal key={p.id} delay={i * 60}>
+              <Reveal key={p.id} delay={i * 70}>
                 <article
                   className={`border-b-2 border-pitch-900 transition-colors duration-300 ${
                     open ? "bg-pitch-900 text-bone-50" : "hover:bg-bone-50"
@@ -86,7 +90,7 @@ export function Programs() {
                     </span>
                     <span
                       className={`hidden shrink-0 border-2 px-3 py-1.5 font-cond text-xs font-bold uppercase tracking-[0.16em] md:block ${
-                        TAG_COLORS[p.id] ?? "border-pitch-900/30 text-pitch-900/70"
+                        TAG_STYLES[p.id] ?? "border-pitch-900/30 text-pitch-900/70"
                       }`}
                     >
                       {p.tag}
@@ -137,7 +141,7 @@ export function Programs() {
                             href="#trials"
                             className="group inline-flex items-center gap-3 border-2 border-gold-500 px-6 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-gold-400 transition-all duration-200 hover:bg-gold-500 hover:text-pitch-950"
                           >
-                            Trial this squad
+                            Apply for this squad
                             <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                           </a>
                         </div>
@@ -156,34 +160,37 @@ export function Programs() {
 
 export function Schedule() {
   const [activeDay, setActiveDay] = useState(0);
+
   return (
     <section id="schedule" className="relative bg-pitch-900 py-24 lg:py-28">
       <span
-        className="text-outline pointer-events-none absolute bottom-0 left-0 select-none font-display text-[18vw] uppercase leading-none opacity-40 lg:text-[180px]"
+        className="text-outline pointer-events-none absolute bottom-0 left-0 select-none font-display text-[17vw] uppercase leading-none opacity-40 lg:text-[180px]"
         aria-hidden="true"
       >
         Matchday
       </span>
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHead
-          kicker="Weekly rhythm"
-          title="Training Schedule"
-          sub="Six days a week across three pitches. Elite Pathway athletes add a morning block; matchday Saturdays belong to the league."
+          kicker="Weekly Rhythm"
+          title="A Week at Adeiso"
+          sub="Six days a week, 9am to 3pm — technique, tactics, physical foundations and schooling support, with Saturdays reserved for local and regional fixtures."
         />
 
-        <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:hidden">
+        {/* mobile tabs */}
+        <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-6 lg:hidden">
           {SCHEDULE.map((d, i) => (
             <button
               key={d.day}
               onClick={() => setActiveDay(i)}
-              className={`border px-4 py-3 font-cond text-base font-bold uppercase tracking-[0.14em] transition-colors ${
+              className={`border px-3 py-3 font-cond text-base font-bold uppercase tracking-[0.14em] transition-colors ${
                 activeDay === i
                   ? "border-gold-500 bg-gold-500 text-pitch-950"
-                  : "border-bone-50/20 text-bone-50/75"
+                  : "border-bone-50/20 text-bone-50/75 hover:border-gold-500/60"
               }`}
             >
               {d.day}
-              {d.note && <span className="ml-2 text-[10px] text-clay-400">●</span>}
+              {d.note && <span className="ml-1.5 text-[10px] text-clay-400">●</span>}
             </button>
           ))}
         </div>
@@ -193,24 +200,28 @@ export function Schedule() {
             {SCHEDULE[activeDay].sessions.map((s, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between gap-3 border border-bone-50/10 bg-pitch-900 px-4 py-3"
+                className="flex items-center justify-between gap-3 border border-bone-50/10 bg-pitch-900 px-4 py-3.5"
               >
                 <span className="flex items-center gap-3">
-                  <span className={`h-2 w-2 ${DOT_COLORS[s.program]}`} />
-                  <span className="font-cond text-base font-semibold uppercase tracking-widest text-bone-50">
-                    {s.program}
+                  <span className={`h-2 w-2 ${DOT_COLORS[s.program] ?? "bg-gold-500"}`} />
+                  <span>
+                    <span className="block font-cond text-base font-semibold uppercase tracking-widest text-bone-50">
+                      {s.program}
+                    </span>
+                    <span className="text-xs text-bone-50/55">{s.pitch}</span>
                   </span>
                 </span>
-                <span className="tabular font-cond text-sm text-gold-400">{s.time}</span>
+                <span className="tabular font-cond text-sm font-bold text-gold-400">{s.time}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-14 hidden grid-cols-6 gap-px border border-bone-50/12 bg-bone-50/10 lg:grid">
+        {/* desktop grid */}
+        <div className="mt-12 hidden grid-cols-6 gap-px border border-bone-50/12 bg-bone-50/10 lg:grid">
           {SCHEDULE.map((d, di) => (
-            <Reveal key={d.day} delay={di * 70}>
-              <div className="group flex h-full min-h-[340px] flex-col bg-pitch-950 p-5 transition-colors duration-300 hover:bg-pitch-900">
+            <Reveal key={d.day} delay={di * 70} className="h-full">
+              <div className="group flex h-full min-h-[300px] flex-col bg-pitch-950 p-5 transition-colors duration-300 hover:bg-pitch-900">
                 <div className="flex items-baseline justify-between border-b-2 border-gold-500/70 pb-3">
                   <h3 className="font-display text-xl uppercase text-bone-50">{d.day}</h3>
                   {d.note && (
@@ -229,7 +240,7 @@ export function Schedule() {
                         {s.time}
                       </p>
                       <p className="mt-1 flex items-center gap-2 text-sm font-semibold text-bone-50">
-                        <span className={`h-1.5 w-1.5 shrink-0 ${DOT_COLORS[s.program]}`} />
+                        <span className={`h-1.5 w-1.5 shrink-0 ${DOT_COLORS[s.program] ?? "bg-gold-500"}`} />
                         {s.program}
                       </p>
                       <p className="mt-0.5 text-xs text-bone-50/55">{s.pitch}</p>
@@ -243,9 +254,9 @@ export function Schedule() {
 
         <Reveal delay={150}>
           <p className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-cond text-sm font-semibold uppercase tracking-[0.18em] text-bone-50/60">
-            <span className="text-gold-400">All sessions</span> Ahenkan Grounds, Spintex Road, Accra
+            <span className="text-gold-400">All sessions</span> Ahenkan Grounds · Adeiso, Upper West Akyem
             <span className="hidden h-1 w-1 bg-bone-50/30 sm:block" />
-            Gates open 30 min before each block
+            Gates open 30 minutes before each block
           </p>
         </Reveal>
       </div>

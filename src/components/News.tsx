@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { IMG, NEWS, TESTIMONIALS } from "../data";
 import { Reveal, SectionHead, usePrefersReducedMotion } from "../lib";
-import { ArrowIcon, QuoteIcon, StarIcon } from "./Icons";
+import { ArrowIcon, QuoteIcon, StarSolid } from "./Icons";
 
 export function News() {
   const [expanded, setExpanded] = useState<number | null>(null);
@@ -13,19 +13,25 @@ export function News() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHead
             dark
-            kicker="From the touchline"
-            title="Academy News"
-            sub="Match reports, transfers and everything happening on Spintex Road — written by our own media team."
+            kicker="Announcements"
+            title="From the Touchline"
+            sub="Fundraising nights, development insights and everything happening at the academy — straight from our own blog."
           />
           <Reveal delay={180}>
-            <p className="mb-2 border-l-4 border-clay-500 bg-bone-50 px-4 py-3 font-cond text-sm font-bold uppercase tracking-[0.16em] text-pitch-800/80">
-              Updated weekly after matchday
-            </p>
+            <a
+              href="https://ahenkanfootballacademy.com/blog"
+              target="_blank"
+              rel="noreferrer"
+              className="group mb-2 inline-flex items-center gap-2 border-l-4 border-clay-500 bg-bone-50 px-4 py-3 font-cond text-sm font-bold uppercase tracking-[0.16em] text-pitch-800/80 transition-colors hover:text-clay-600"
+            >
+              View all on the blog
+              <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
           </Reveal>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-12">
-          {/* lead story */}
+          {/* featured story */}
           <Reveal variant="left" className="lg:col-span-7">
             <article className="group flex h-full flex-col border-2 border-pitch-900 bg-bone-50">
               <div className="relative overflow-hidden">
@@ -34,8 +40,8 @@ export function News() {
                   alt={lead.title}
                   className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
-                <span className="absolute left-0 top-5 bg-pitch-900 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.18em] text-gold-400">
-                  {lead.cat}
+                <span className="absolute left-0 top-5 bg-gold-500 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.18em] text-pitch-950">
+                  ★ Featured · {lead.cat}
                 </span>
               </div>
               <div className="flex flex-1 flex-col p-7 sm:p-9">
@@ -62,8 +68,8 @@ export function News() {
           {/* secondary stories */}
           <div className="flex flex-col gap-8 lg:col-span-5">
             {others.map((n, i) => (
-              <Reveal key={n.title} variant="right" delay={120 + i * 120}>
-                <article className="group grid grid-cols-[38%_1fr] gap-0 border-2 border-pitch-900 bg-bone-50 transition-transform duration-300 hover:-translate-y-1">
+              <Reveal key={n.title} variant="right" delay={120 + i * 130} className="flex-1">
+                <article className="group grid h-full grid-cols-[38%_1fr] border-2 border-pitch-900 bg-bone-50 transition-transform duration-300 hover:-translate-y-1">
                   <div className="overflow-hidden">
                     <img
                       src={n.img}
@@ -72,8 +78,8 @@ export function News() {
                     />
                   </div>
                   <div className="flex flex-col p-5 sm:p-6">
-                    <p className="flex items-center gap-3">
-                      <span className="bg-gold-500 px-2 py-0.5 font-cond text-[11px] font-bold uppercase tracking-[0.16em] text-pitch-950">
+                    <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <span className="bg-pitch-900 px-2 py-0.5 font-cond text-[11px] font-bold uppercase tracking-[0.16em] text-gold-400">
                         {n.cat}
                       </span>
                       <span className="tabular font-cond text-xs font-semibold uppercase tracking-widest text-pitch-800/55">
@@ -127,35 +133,43 @@ export function Testimonials() {
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
         <Reveal>
           <p className="font-cond text-sm font-bold uppercase tracking-[0.3em] text-gold-400">
-            Voices of Ahenkan
+            What People Say About Us
+          </p>
+          <p className="mx-auto mt-3 max-w-2xl text-bone-50/60">
+            Hear from parents, community members, and professionals about the impact of Ahenkan Football Academy.
           </p>
         </Reveal>
 
-        <div className="mt-8 min-h-[220px] sm:min-h-[190px]" aria-live="polite">
+        <div className="mt-10 min-h-[260px] sm:min-h-[220px]" aria-live="polite">
           <blockquote key={idx} className="reveal is-in">
-            <p className="mx-auto max-w-3xl text-2xl font-medium leading-snug text-bone-50 sm:text-3xl">
+            <div className="flex items-center justify-center gap-1 text-gold-500">
+              {[...Array(5)].map((_, i) => (
+                <StarSolid key={i} className="h-4 w-4" />
+              ))}
+            </div>
+            <p className="mx-auto mt-6 max-w-3xl text-2xl font-medium leading-snug text-bone-50 sm:text-3xl">
               “{t.quote}”
             </p>
-            <footer className="mt-8">
-              <div className="flex items-center justify-center gap-1 text-gold-500">
-                {[...Array(5)].map((_, i) => (
-                  <StarIcon key={i} className="h-4 w-4" />
-                ))}
-              </div>
-              <p className="mt-3 font-display text-xl uppercase tracking-wide text-bone-50">{t.name}</p>
-              <p className="mt-1 font-cond text-sm font-semibold uppercase tracking-[0.2em] text-bone-50/55">
-                {t.role}
-              </p>
+            <footer className="mt-8 flex items-center justify-center gap-4">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-pitch-500 to-gold-500 font-display text-sm text-pitch-950">
+                {t.initials}
+              </span>
+              <span className="text-left">
+                <span className="block font-display text-lg uppercase tracking-wide text-bone-50">{t.name}</span>
+                <span className="block font-cond text-sm font-semibold uppercase tracking-[0.2em] text-bone-50/55">
+                  {t.role}
+                </span>
+              </span>
             </footer>
           </blockquote>
         </div>
 
         <div className="mt-10 flex items-center justify-center gap-3">
-          {TESTIMONIALS.map((_, i) => (
+          {TESTIMONIALS.map((x, i) => (
             <button
-              key={i}
+              key={x.name}
               onClick={() => setIdx(i)}
-              aria-label={`Show testimonial ${i + 1}`}
+              aria-label={`Show testimonial from ${x.name}`}
               className={`h-2 transition-all duration-300 ${
                 i === idx ? "w-10 bg-gold-500" : "w-5 bg-bone-50/25 hover:bg-bone-50/50"
               }`}
@@ -168,11 +182,12 @@ export function Testimonials() {
 }
 
 const GALLERY = [
-  { src: IMG.hero, cap: "Golden hour ball-mastery" },
-  { src: IMG.drill, cap: "Rondo culture, every morning" },
-  { src: IMG.keeper, cap: "Goalkeeping unit, 07:00 sharp" },
-  { src: IMG.match, cap: "U17 league matchday" },
-  { src: IMG.pitch, cap: "Ahenkan Grounds from above" },
+  { src: IMG.team, cap: "The Ahenkan family" },
+  { src: IMG.fundraiser, cap: "Building Dreams Together" },
+  { src: IMG.drill, cap: "Training day at Adeiso" },
+  { src: IMG.match, cap: "Matchday intensity" },
+  { src: IMG.pitch, cap: "Our grounds from above" },
+  { src: IMG.keeper, cap: "The last line" },
 ];
 
 export function Gallery() {
@@ -182,23 +197,28 @@ export function Gallery() {
         <Reveal>
           <div className="flex items-end justify-between gap-6">
             <h2 className="font-display text-3xl uppercase text-bone-50 sm:text-4xl">
-              From the <span className="text-gold-500">Pitch</span>
+              Life at <span className="text-gold-500">Ahenkan</span>
             </h2>
-            <p className="hidden font-cond text-sm font-semibold uppercase tracking-[0.22em] text-bone-50/50 sm:block">
-              @ahenkanfa · every week
-            </p>
+            <a
+              href="https://ahenkanfootballacademy.com/blog"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden font-cond text-sm font-semibold uppercase tracking-[0.22em] text-bone-50/50 transition-colors hover:text-gold-400 sm:block"
+            >
+              Follow the journey →
+            </a>
           </div>
         </Reveal>
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {GALLERY.map((g, i) => (
-            <Reveal key={g.src + i} delay={i * 80} variant="scale">
+            <Reveal key={g.cap} delay={i * 70} variant="scale">
               <figure className="group relative overflow-hidden border border-bone-50/10">
                 <img
                   src={g.src}
                   alt={g.cap}
                   className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
                 />
-                <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-pitch-950/90 px-3 py-2.5 font-cond text-xs font-bold uppercase tracking-[0.16em] text-gold-400 transition-transform duration-300 group-hover:translate-y-0">
+                <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-pitch-950/90 px-3 py-2.5 font-cond text-xs font-bold uppercase tracking-[0.14em] text-gold-400 transition-transform duration-300 group-hover:translate-y-0">
                   {g.cap}
                 </figcaption>
                 <span className="absolute right-2 top-2 h-2 w-2 bg-gold-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

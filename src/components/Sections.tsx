@@ -1,174 +1,152 @@
-import { IMG, PATHWAY, PILLARS, STATS } from "../data";
-import { Reveal, SectionHead, useCountUp, useInView } from "../lib";
-import { ArrowIcon, PILLAR_ICONS, PATH_ICONS } from "./Icons";
+import { IMG, STEPS, WHY } from "../data";
+import { Reveal, SectionHead } from "../lib";
+import { ArrowIcon, WHY_ICONS } from "./Icons";
 
-function Stat({
-  value,
-  suffix,
-  label,
-  note,
-  start,
-}: {
-  value: number;
-  suffix: string;
-  label: string;
-  note: string;
-  start: boolean;
-}) {
-  const n = useCountUp(value, 1700, start);
+export function Academy() {
   return (
-    <div className="group border-l-2 border-gold-500/40 py-2 pl-6 transition-colors duration-300 hover:border-gold-400">
-      <p className="tabular font-display text-6xl leading-none text-bone-50 transition-colors duration-300 group-hover:text-gold-400 lg:text-7xl">
-        {n}
-        <span className="text-gold-500">{suffix}</span>
-      </p>
-      <p className="mt-3 font-cond text-base font-bold uppercase tracking-[0.22em] text-bone-50">
-        {label}
-      </p>
-      <p className="mt-1 text-sm text-bone-50/55">{note}</p>
-    </div>
-  );
-}
-
-export function StatsBand() {
-  const { ref, inView } = useInView<HTMLDivElement>(0.3);
-  return (
-    <section className="relative bg-pitch-900 py-20">
-      <div className="diagonal-stripes absolute inset-y-0 left-0 w-24 opacity-60" aria-hidden="true" />
-      <div
-        ref={ref}
-        className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:gap-8"
-      >
-        {STATS.map((s, i) => (
-          <Reveal key={s.label} delay={i * 100}>
-            <Stat {...s} start={inView} />
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export function Way() {
-  return (
-    <section id="way" className="relative overflow-hidden bg-bone-50 py-24 text-pitch-900 lg:py-32">
+    <section id="academy" className="relative bg-bone-100 py-24 text-pitch-900 lg:py-32">
       <span
-        className="text-outline-dark pointer-events-none absolute -top-8 left-0 select-none font-display text-[22vw] uppercase leading-none opacity-70 lg:text-[220px]"
+        className="text-outline-dark pointer-events-none absolute right-0 top-4 select-none font-display text-[19vw] uppercase leading-none opacity-50 lg:text-[190px]"
         aria-hidden="true"
       >
-        Miracle
+        Ahenkan
       </span>
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 sm:px-6 lg:grid-cols-12">
+
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10">
+        {/* sticky intro column */}
         <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-32">
+          <div className="lg:sticky lg:top-36">
             <SectionHead
               dark
-              kicker="Our philosophy"
-              title="The Ahenkan Way"
-              sub="Four pillars hold up everything we do on and off the pitch. A player who graduates from Ahenkan leaves with more than a football education — they leave ready for life."
+              kicker="Why Choose Ahenkan Academy?"
+              title="Champions in Every Aspect of Life"
+              sub="We unearth talent and provide world-class training that goes beyond football skills, preparing our players to become champions in all aspects of life."
             />
+
             <Reveal delay={220}>
-              <div className="mt-10 overflow-hidden">
+              <blockquote className="mt-8 border-l-4 border-gold-500 bg-bone-50 px-6 py-5">
+                <p className="font-display text-xl uppercase tracking-wide text-pitch-800">
+                  “To become one of the best academies in the world.”
+                </p>
+                <footer className="mt-2 font-cond text-sm font-semibold uppercase tracking-[0.22em] text-pitch-800/55">
+                  — Our Mission
+                </footer>
+              </blockquote>
+            </Reveal>
+
+            <Reveal delay={300} variant="scale">
+              <figure className="group relative mt-8 hidden overflow-hidden border-2 border-pitch-900 lg:block">
                 <img
-                  src={IMG.drill}
-                  alt="Academy players working a rondo drill with coaches"
-                  className="aspect-[16/10] w-full border-4 border-pitch-900 object-cover transition-transform duration-700 hover:scale-[1.03]"
+                  src={IMG.pitch}
+                  alt="Aerial view of the Ahenkan training grounds in Adeiso"
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
-              </div>
-              <p className="mt-4 font-cond text-sm font-semibold uppercase tracking-[0.2em] text-pitch-800/60">
-                Morning rondo block · Development squad
-              </p>
+                <figcaption className="absolute bottom-0 left-0 bg-pitch-900 px-4 py-2 font-cond text-xs font-bold uppercase tracking-[0.2em] text-gold-400">
+                  Our grounds · Adeiso, Upper West Akyem
+                </figcaption>
+              </figure>
+            </Reveal>
+
+            <Reveal delay={340}>
+              <a
+                href="https://ahenkanfootballacademy.com/about"
+                target="_blank"
+                rel="noreferrer"
+                className="group mt-8 inline-flex items-center gap-3 font-cond text-base font-bold uppercase tracking-[0.16em] text-clay-500 transition-colors hover:text-clay-600"
+              >
+                More about the academy
+                <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </a>
             </Reveal>
           </div>
         </div>
 
+        {/* eight reasons */}
         <div className="lg:col-span-7">
-          <div className="flex flex-col">
-            {PILLARS.map((p, i) => {
-              const Icon = PILLAR_ICONS[p.icon];
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {WHY.map((w, i) => {
+              const Icon = WHY_ICONS[w.icon];
               return (
-                <Reveal key={p.no} delay={i * 110}>
-                  <article className="group relative grid grid-cols-[auto_1fr] gap-6 border-b border-pitch-900/15 py-9 transition-all duration-300 hover:bg-pitch-900/[0.03] hover:pl-4 sm:gap-9">
-                    <div className="flex flex-col items-center gap-4">
-                      <span className="font-display text-2xl text-pitch-900/25 transition-colors duration-300 group-hover:text-gold-600">
-                        {p.no}
+                <Reveal key={w.title} delay={(i % 2) * 110 + Math.floor(i / 2) * 40}>
+                  <article
+                    className={`group h-full border-2 border-pitch-900/15 bg-bone-50 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-600 hover:shadow-[0_18px_40px_rgba(8,32,21,0.12)] ${
+                      i % 3 === 1 ? "sm:translate-y-6" : ""
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="flex h-12 w-12 items-center justify-center border-2 border-pitch-700/30 text-pitch-700 transition-all duration-300 group-hover:border-gold-600 group-hover:bg-gold-500 group-hover:text-pitch-950">
+                        <Icon className="h-6 w-6" />
                       </span>
-                      <span className="h-full w-px bg-pitch-900/10" />
+                      <span className="font-display text-2xl text-pitch-900/15 transition-colors duration-300 group-hover:text-gold-600">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-4">
-                        <span className="flex h-13 w-13 shrink-0 items-center justify-center border-2 border-pitch-900 bg-bone-50 p-3 text-pitch-900 transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold-500 group-hover:bg-gold-500">
-                          <Icon className="h-6 w-6" />
-                        </span>
-                        <h3 className="font-display text-2xl uppercase tracking-wide text-pitch-900 sm:text-3xl">
-                          {p.title}
-                        </h3>
-                      </div>
-                      <p className="mt-4 max-w-xl text-base leading-relaxed text-pitch-800/80">
-                        {p.body}
-                      </p>
-                    </div>
+                    <h3 className="mt-5 font-display text-xl uppercase tracking-wide text-pitch-900">
+                      {w.title}
+                    </h3>
+                    <p className="mt-2.5 text-sm leading-relaxed text-pitch-800/75">{w.desc}</p>
                   </article>
                 </Reveal>
               );
             })}
           </div>
-          <Reveal delay={150}>
-            <a
-              href="#trials"
-              className="group mt-10 inline-flex items-center gap-3 bg-pitch-900 px-7 py-4 font-cond text-lg font-bold uppercase tracking-[0.14em] text-bone-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-pitch-800"
-            >
-              Join the next intake
-              <ArrowIcon className="h-5 w-5 text-gold-400 transition-transform duration-300 group-hover:translate-x-1.5" />
-            </a>
-          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
-export function Pathway() {
+export function Steps() {
   return (
-    <section className="relative overflow-hidden bg-pitch-950 py-24 lg:py-28">
-      <div className="pitch-lines absolute inset-0 opacity-50" aria-hidden="true" />
+    <section className="relative overflow-hidden bg-pitch-900 py-24 lg:py-28">
+      <span
+        className="text-outline pointer-events-none absolute bottom-0 right-0 select-none font-display text-[16vw] uppercase leading-none opacity-40 lg:text-[170px]"
+        aria-hidden="true"
+      >
+        Admissions
+      </span>
+      <div className="diagonal-stripes absolute left-0 top-0 h-2 w-full" aria-hidden="true" />
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHead
-          align="center"
-          kicker="Player development"
-          title="From First Touch to First Contract"
-          sub="A single, honest road map. Every player walks the same five stages — no shortcuts, no pay-to-play."
+          kicker="The Road to the Badge"
+          title="How Players Join Ahenkan"
+          sub="Three simple steps separate you from world-class training. Our admissions team walks beside you through every one of them."
         />
 
-        <div className="relative mt-16">
-          <div
-            className="absolute left-0 right-0 top-9 hidden h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent lg:block"
-            aria-hidden="true"
-          />
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
-            {PATHWAY.map((s, i) => {
-              const Icon = PATH_ICONS[s.icon];
-              return (
-                <Reveal key={s.step} delay={i * 120}>
-                  <div className="group relative text-center lg:px-2">
-                    <div className="relative z-10 mx-auto flex h-[72px] w-[72px] items-center justify-center border-2 border-gold-500/60 bg-pitch-900 text-gold-400 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-gold-400 group-hover:bg-gold-500 group-hover:text-pitch-950">
-                      <Icon className="h-7 w-7" />
-                    </div>
-                    <p className="text-outline-gold mt-5 font-display text-5xl leading-none">
-                      {s.step}
-                    </p>
-                    <h3 className="mt-2 font-display text-xl uppercase tracking-wide text-bone-50">
-                      {s.title}
-                    </h3>
-                    <p className="mx-auto mt-3 max-w-[26ch] text-sm leading-relaxed text-bone-50/60">
-                      {s.body}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+        <div className="mt-14 grid grid-cols-1 gap-px border-2 border-bone-50/15 bg-bone-50/15 md:grid-cols-3">
+          {STEPS.map((s, i) => (
+            <Reveal key={s.no} delay={i * 140} className="h-full">
+              <div className="group relative h-full bg-pitch-900 p-8 transition-colors duration-300 hover:bg-pitch-850 lg:p-10">
+                <p className="font-display text-6xl text-gold-500/25 transition-colors duration-300 group-hover:text-gold-500/60 lg:text-7xl">
+                  {s.no}
+                </p>
+                <h3 className="mt-4 font-display text-2xl uppercase tracking-wide text-bone-50">
+                  {s.title}
+                </h3>
+                <p className="mt-3 leading-relaxed text-bone-50/70">{s.desc}</p>
+                {i < 2 && (
+                  <ArrowIcon className="absolute right-6 top-1/2 hidden h-6 w-6 -translate-y-1/2 text-gold-500/50 md:block" />
+                )}
+              </div>
+            </Reveal>
+          ))}
         </div>
+
+        <Reveal delay={200}>
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-6 border-2 border-gold-500/40 bg-pitch-950/60 px-6 py-5 sm:px-8">
+            <p className="font-cond text-lg font-semibold uppercase tracking-[0.14em] text-bone-50/85">
+              <span className="text-gold-400">Open Trial</span> · Registration GH₵200 · 9am – 3pm · Ages 15–16
+            </p>
+            <a
+              href="#trials"
+              className="group inline-flex items-center gap-3 bg-gold-500 px-6 py-3 font-cond text-base font-bold uppercase tracking-[0.14em] text-pitch-950 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400"
+            >
+              Start Application
+              <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
