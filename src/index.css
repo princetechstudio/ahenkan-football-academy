@@ -5,29 +5,32 @@
   --font-body: "Barlow", "Trebuchet MS", sans-serif;
   --font-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
 
-  --color-royal-950: #17001f;
-  --color-royal-900: #25003a;
-  --color-royal-850: #2f0049;
-  --color-royal-800: #3b0059;
-  --color-royal-700: #5e008a;
-  --color-royal-600: #6e00a1;
-  --color-royal-500: #7e01b7;
-  --color-royal-400: #9930ce;
-  --color-royal-300: #b968e4;
-  --color-royal-200: #d7a5f0;
-  --color-royal-100: #eedcf9;
+  --color-pitch-950: #05130c;
+  --color-pitch-900: #082015;
+  --color-pitch-850: #0b2a1c;
+  --color-pitch-800: #0f3524;
+  --color-pitch-700: #16492f;
+  --color-pitch-600: #1e5c3c;
+  --color-pitch-500: #2b7a50;
+  --color-pitch-400: #4d9a6e;
+  --color-pitch-300: #7cb995;
 
-  --color-gold-500: #ffff00;
-  --color-gold-400: #ffea00;
-  --color-gold-300: #fff566;
+  --color-gold-300: #ffd966;
+  --color-gold-400: #ffc838;
+  --color-gold-500: #f2b70a;
+  --color-gold-600: #d29e02;
+  --color-gold-700: #a87e03;
+
+  --color-bone-50: #f6f4eb;
+  --color-bone-100: #eeeade;
+  --color-bone-200: #e0dbc9;
+  --color-bone-300: #cdc6b1;
+
+  --color-clay-400: #e06a55;
+  --color-clay-500: #c6432e;
 
   --color-ink: #010101;
   --color-paper: #ffffff;
-  --color-lav-50: #faf7fc;
-  --color-lav-100: #f4edf9;
-  --color-lav-200: #e9ddf2;
-
-  --color-loss: #e23a3a;
 }
 
 html {
@@ -35,8 +38,8 @@ html {
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: var(--color-pitch-950);
+  color: var(--color-bone-50);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -44,7 +47,7 @@ body {
 
 ::selection {
   background: var(--color-gold-500);
-  color: var(--color-ink);
+  color: var(--color-pitch-950);
 }
 
 /* ---------- keyframes ---------- */
@@ -69,10 +72,10 @@ body {
 @keyframes pulse-dot {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.55);
+    box-shadow: 0 0 0 0 rgba(242, 183, 10, 0.55);
   }
   70% {
-    box-shadow: 0 0 0 9px rgba(255, 255, 0, 0);
+    box-shadow: 0 0 0 9px rgba(242, 183, 10, 0);
   }
 }
 @keyframes drift {
@@ -155,15 +158,15 @@ body {
 
 /* ---------- textures ---------- */
 .text-outline {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.24);
+  -webkit-text-stroke: 1.5px rgba(246, 244, 235, 0.22);
   color: transparent;
 }
 .text-outline-gold {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 0, 0.55);
+  -webkit-text-stroke: 1.5px rgba(242, 183, 10, 0.55);
   color: transparent;
 }
-.text-outline-royal {
-  -webkit-text-stroke: 1.5px rgba(126, 1, 183, 0.3);
+.text-outline-dark {
+  -webkit-text-stroke: 1.5px rgba(8, 32, 21, 0.16);
   color: transparent;
 }
 
@@ -172,29 +175,28 @@ body {
   inset: 0;
   z-index: 80;
   pointer-events: none;
-  opacity: 0.04;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  background-image: url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .pitch-lines {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(246, 244, 235, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246, 244, 235, 0.045) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
 .pitch-lines-dark {
   background-image:
-    linear-gradient(rgba(126, 1, 183, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(126, 1, 183, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(8, 32, 21, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 32, 21, 0.07) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
 .diagonal-stripes {
   background-image: repeating-linear-gradient(
     -55deg,
-    rgba(255, 255, 0, 0.16) 0 2px,
+    rgba(242, 183, 10, 0.16) 0 2px,
     transparent 2px 12px
   );
 }
@@ -227,16 +229,16 @@ body {
 /* ---------- component shortcuts ---------- */
 @layer components {
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-3 bg-gold-500 px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-[0_14px_36px_rgba(255,255,0,0.25)];
+    @apply inline-flex items-center justify-center gap-3 bg-gold-500 px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-pitch-950 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-[0_14px_36px_rgba(242,183,10,0.3)];
   }
-  .btn-purple {
-    @apply inline-flex items-center justify-center gap-3 bg-royal-500 px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-paper transition-all duration-200 hover:-translate-y-0.5 hover:bg-royal-700 hover:shadow-[0_14px_36px_rgba(126,1,183,0.35)];
+  .btn-green {
+    @apply inline-flex items-center justify-center gap-3 bg-pitch-600 px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-bone-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-pitch-500 hover:shadow-[0_14px_36px_rgba(43,122,80,0.4)];
   }
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-3 border-2 border-paper/30 px-7 py-3.5 font-cond text-base font-semibold uppercase tracking-[0.14em] text-paper transition-all duration-200 hover:border-gold-500 hover:text-gold-500;
+    @apply inline-flex items-center justify-center gap-3 border-2 border-bone-50/30 px-7 py-3.5 font-cond text-base font-semibold uppercase tracking-[0.14em] text-bone-50 transition-all duration-200 hover:border-gold-500 hover:text-gold-400;
   }
   .btn-ghost-dark {
-    @apply inline-flex items-center justify-center gap-3 border-2 border-ink/25 px-7 py-3.5 font-cond text-base font-semibold uppercase tracking-[0.14em] text-ink transition-all duration-200 hover:border-royal-500 hover:text-royal-500;
+    @apply inline-flex items-center justify-center gap-3 border-2 border-pitch-900/30 px-7 py-3.5 font-cond text-base font-semibold uppercase tracking-[0.14em] text-pitch-900 transition-all duration-200 hover:border-gold-600 hover:text-gold-700;
   }
 }
 
