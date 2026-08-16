@@ -5,29 +5,29 @@
   --font-body: "Barlow", "Trebuchet MS", sans-serif;
   --font-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
 
-  --color-pitch-950: #05130c;
-  --color-pitch-900: #082015;
-  --color-pitch-850: #0b2a1c;
-  --color-pitch-800: #0f3524;
-  --color-pitch-700: #16492f;
-  --color-pitch-600: #1e5c3c;
-  --color-pitch-500: #2b7a50;
-  --color-pitch-400: #4d9a6e;
+  --color-royal-950: #17001f;
+  --color-royal-900: #25003a;
+  --color-royal-850: #2f0049;
+  --color-royal-800: #3b0059;
+  --color-royal-700: #5e008a;
+  --color-royal-600: #6e00a1;
+  --color-royal-500: #7e01b7;
+  --color-royal-400: #9930ce;
+  --color-royal-300: #b968e4;
+  --color-royal-200: #d7a5f0;
+  --color-royal-100: #eedcf9;
 
-  --color-gold-300: #ffd966;
-  --color-gold-400: #ffc838;
-  --color-gold-500: #f2b70a;
-  --color-gold-600: #d29e02;
-  --color-gold-700: #a87e03;
+  --color-gold-500: #ffff00;
+  --color-gold-400: #ffea00;
+  --color-gold-300: #fff566;
 
-  --color-bone-50: #f6f4eb;
-  --color-bone-100: #eeeade;
-  --color-bone-200: #e0dbc9;
-  --color-bone-300: #cdc6b1;
+  --color-ink: #010101;
+  --color-paper: #ffffff;
+  --color-lav-50: #faf7fc;
+  --color-lav-100: #f4edf9;
+  --color-lav-200: #e9ddf2;
 
-  --color-clay-400: #e06a55;
-  --color-clay-500: #c6432e;
-  --color-clay-600: #a53523;
+  --color-loss: #e23a3a;
 }
 
 html {
@@ -35,8 +35,8 @@ html {
 }
 
 body {
-  background-color: var(--color-pitch-950);
-  color: var(--color-bone-50);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -44,23 +44,13 @@ body {
 
 ::selection {
   background: var(--color-gold-500);
-  color: var(--color-pitch-950);
+  color: var(--color-ink);
 }
 
 /* ---------- keyframes ---------- */
 @keyframes rise {
   to {
     transform: translateY(0);
-  }
-}
-@keyframes fadeup {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 @keyframes kenburns {
@@ -79,15 +69,10 @@ body {
 @keyframes pulse-dot {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(242, 183, 10, 0.55);
+    box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.55);
   }
   70% {
-    box-shadow: 0 0 0 9px rgba(242, 183, 10, 0);
-  }
-}
-@keyframes spin-slow {
-  to {
-    transform: rotate(360deg);
+    box-shadow: 0 0 0 9px rgba(255, 255, 0, 0);
   }
 }
 @keyframes drift {
@@ -97,6 +82,15 @@ body {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+@keyframes glowline {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
@@ -120,7 +114,7 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 32s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 .marquee-track:hover {
   animation-play-state: paused;
@@ -134,8 +128,8 @@ body {
   animation: drift 5s ease-in-out infinite;
 }
 
-.anim-spin-slow {
-  animation: spin-slow 26s linear infinite;
+.anim-glow {
+  animation: glowline 3s ease-in-out infinite;
 }
 
 .reveal {
@@ -161,38 +155,39 @@ body {
 
 /* ---------- textures ---------- */
 .text-outline {
-  -webkit-text-stroke: 1.5px rgba(246, 244, 235, 0.22);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.24);
   color: transparent;
 }
 .text-outline-gold {
-  -webkit-text-stroke: 1.5px rgba(242, 183, 10, 0.35);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 0, 0.55);
   color: transparent;
 }
-.text-outline-dark {
-  -webkit-text-stroke: 1.5px rgba(8, 32, 21, 0.18);
+.text-outline-royal {
+  -webkit-text-stroke: 1.5px rgba(126, 1, 183, 0.3);
   color: transparent;
 }
 
 .noise-overlay {
   position: fixed;
   inset: 0;
-  z-index: 70;
+  z-index: 80;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .pitch-lines {
   background-image:
-    linear-gradient(rgba(246, 244, 235, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(246, 244, 235, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
 .diagonal-stripes {
   background-image: repeating-linear-gradient(
     -55deg,
-    rgba(242, 183, 10, 0.14) 0 2px,
+    rgba(255, 255, 0, 0.16) 0 2px,
     transparent 2px 12px
   );
 }
@@ -209,7 +204,7 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -6px;
   height: 2px;
   width: 100%;
   background: var(--color-gold-500);
@@ -218,8 +213,24 @@ body {
   transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.2, 1);
 }
 .nav-link:hover::after,
-.nav-link:focus-visible::after {
+.nav-link.nav-active::after {
   transform: scaleX(1);
+}
+
+/* ---------- component shortcuts ---------- */
+@layer components {
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-3 bg-gold-500 px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-[0_14px_36px_rgba(255,255,0,0.25)];
+  }
+  .btn-purple {
+    @apply inline-flex items-center justify-center gap-3 bg-royal-500 px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-paper transition-all duration-200 hover:-translate-y-0.5 hover:bg-royal-700 hover:shadow-[0_14px_36px_rgba(126,1,183,0.35)];
+  }
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-3 border-2 border-paper/30 px-7 py-3.5 font-cond text-base font-semibold uppercase tracking-[0.14em] text-paper transition-all duration-200 hover:border-gold-500 hover:text-gold-500;
+  }
+  .btn-ghost-dark {
+    @apply inline-flex items-center justify-center gap-3 border-2 border-ink/25 px-7 py-3.5 font-cond text-base font-semibold uppercase tracking-[0.14em] text-ink transition-all duration-200 hover:border-royal-500 hover:text-royal-500;
+  }
 }
 
 /* ---------- reduced motion ---------- */
@@ -250,7 +261,7 @@ body {
   }
   .anim-kenburns,
   .anim-drift,
-  .anim-spin-slow {
+  .anim-glow {
     animation: none;
   }
 }

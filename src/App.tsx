@@ -1,31 +1,44 @@
+import { useEffect } from "react";
+import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import { Academy, Steps } from "./components/Sections";
-import { Programs, Schedule } from "./components/Programs";
-import { Community, Leadership } from "./components/People";
-import { Gallery, News, Testimonials } from "./components/News";
-import Trials from "./components/Trials";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Training from "./pages/Training";
+import Fixtures from "./pages/Fixtures";
+import Blogs from "./pages/Blogs";
+import Staff from "./pages/Staff";
+import Contact from "./pages/Contact";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-pitch-950 font-body text-bone-50">
-      <div className="noise-overlay" aria-hidden="true" />
-      <Header />
-      <main>
-        <Hero />
-        <Academy />
-        <Programs />
-        <Schedule />
-        <Steps />
-        <Leadership />
-        <Community />
-        <Testimonials />
-        <News />
-        <Gallery />
-        <Trials />
-      </main>
-      <Footer />
-    </div>
+    <HashRouter>
+      <ScrollToTop />
+      <div className="min-h-screen bg-paper font-body text-ink">
+        <div className="noise-overlay" aria-hidden="true" />
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/training" element={<Training />} />
+            <Route path="/fixtures" element={<Fixtures />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/staff" element={<Staff />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </HashRouter>
   );
 }
