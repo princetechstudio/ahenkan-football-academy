@@ -35,6 +35,7 @@ export const NAV = [
   { label: "Training", to: "/training" },
   { label: "Fixtures", to: "/fixtures" },
   { label: "Blogs", to: "/blogs" },
+  { label: "Media", to: "/media" },
   { label: "Staff", to: "/staff" },
   { label: "Contact", to: "/contact" },
 ];

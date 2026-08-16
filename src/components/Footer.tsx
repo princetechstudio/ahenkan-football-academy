@@ -177,7 +177,10 @@ export default function Footer() {
             © 2026 Ahenkan Football Academy · Est. 2025
           </p>
           <p className="font-cond text-sm uppercase tracking-[0.18em] text-gold-500/80">
-            Talent · Wisdom · Knowledge at Work
+            Talent · Wisdom · Knowledge at Work ·{" "}
+            <Link to="/admin" className="transition-colors hover:text-bone-50">
+              Admin CMS
+            </Link>
           </p>
         </div>
       </div>

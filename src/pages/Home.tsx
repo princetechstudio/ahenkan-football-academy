@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BLOGS, IMG, LEADERSHIP, PROGRAMS, STATS, TESTIMONIALS, TICKER, WHY } from "../data";
+import { IMG, LEADERSHIP, PROGRAMS, STATS, TESTIMONIALS, TICKER, WHY } from "../data";
+import { useBlogs } from "../hooks/useContent";
 import {
   Kicker,
   Reveal,
@@ -419,7 +420,8 @@ function Testimonials() {
 
 /* ---------------- News ---------------- */
 function News() {
-  const posts = BLOGS.slice(0, 3);
+  const blogs = useBlogs();
+  const posts = blogs.slice(0, 3);
   const [lead, ...rest] = posts;
   return (
     <section className="relative bg-bone-100 py-24 text-pitch-900 lg:py-32">

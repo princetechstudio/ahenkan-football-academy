@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { FIXTURES, RESULTS, STANDINGS } from "../data";
+import { STANDINGS } from "../data";
+import { useFixtures, useResults } from "../hooks/useContent";
 import { PageHead, Reveal, fmtDate, fmtTime, useCountdown } from "../lib";
 import { PinIcon, StarIcon } from "../components/Icons";
 
@@ -12,12 +13,13 @@ const RES_STYLE: Record<"W" | "D" | "L", string> = {
 };
 
 function Countdown() {
+  const fixtures = useFixtures();
   const next = useMemo(() => {
     const now = Date.now();
-    return FIXTURES.map((f) => ({ ...f })).sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-    ).find((f) => new Date(f.date).getTime() > now);
-  }, []);
+    return [...fixtures]
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+      .find((f) => new Date(f.date).getTime() > now);
+  }, [fixtures]);
 
   const { d, h, m, s, past } = useCountdown(next?.date ?? "2026-01-01T00:00:00");
 
@@ -77,9 +79,11 @@ function Countdown() {
 
 export default function Fixtures() {
   const [filter, setFilter] = useState<Filter>("All");
+  const fixtures = useFixtures();
+  const allResults = useResults();
 
-  const upcoming = FIXTURES.filter((f) => filter === "All" || f.squad === filter);
-  const results = RESULTS.filter((r) => filter === "All" || r.squad === filter);
+  const upcoming = fixtures.filter((f) => filter === "All" || f.squad === filter);
+  const results = allResults.filter((r) => filter === "All" || r.squad === filter);
 
   return (
     <>

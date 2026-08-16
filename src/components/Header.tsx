@@ -78,14 +78,14 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-4 xl:gap-5 lg:flex" aria-label="Primary">
             {NAV.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
                 end={n.to === "/"}
                 className={({ isActive }) =>
-                  `nav-link font-cond text-base font-semibold uppercase tracking-[0.14em] transition-colors ${
+                  `nav-link font-cond text-sm xl:text-base font-semibold uppercase tracking-[0.14em] transition-colors ${
                     isActive ? "nav-active text-gold-400" : "text-bone-50/85 hover:text-bone-50"
                   }`
                 }

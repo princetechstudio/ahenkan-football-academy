@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { BLOGS } from "../data";
+import { useBlogs } from "../hooks/useContent";
 import { PageHead, Reveal } from "../lib";
 import { ArrowIcon, StarIcon } from "../components/Icons";
 
 export default function Blogs() {
-  const [expanded, setExpanded] = useState<number | null>(null);
-  const featured = BLOGS.find((b) => b.featured) ?? BLOGS[0];
-  const rest = BLOGS.filter((b) => b.id !== featured.id);
+  const blogs = useBlogs();
+  const [expanded, setExpanded] = useState<string | number | null>(null);
+  const featured = blogs.find((b) => b.featured) ?? blogs[0];
+  const rest = blogs.filter((b) => b.id !== featured.id);
 
   return (
     <>

@@ -9,6 +9,8 @@ import Fixtures from "./pages/Fixtures";
 import Blogs from "./pages/Blogs";
 import Staff from "./pages/Staff";
 import Contact from "./pages/Contact";
+import Media from "./pages/Media";
+import Admin from "./pages/Admin";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,6 +36,8 @@ export default function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/staff" element={<Staff />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/media" element={<Media />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
