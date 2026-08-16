@@ -18,33 +18,33 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-ink pt-20 text-paper">
+    <footer className="relative overflow-hidden bg-paper text-ink">
       <p
-        className="text-outline pointer-events-none absolute left-1/2 top-6 -translate-x-1/2 select-none whitespace-nowrap font-display text-[15vw] uppercase leading-none opacity-50"
+        className="text-outline-royal pointer-events-none absolute left-1/2 top-6 -translate-x-1/2 select-none whitespace-nowrap font-display text-[15vw] uppercase leading-none opacity-60"
         aria-hidden="true"
       >
         Ahenkan FA
       </p>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid grid-cols-1 gap-12 border-b border-paper/10 pb-14 lg:grid-cols-12">
+      <div className="relative mx-auto max-w-7xl px-4 pt-20 sm:px-6">
+        <div className="grid grid-cols-1 gap-12 border-b border-ink/10 pb-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-3">
               <img
                 src={IMG.logo}
                 alt="Ahenkan Football Academy crest"
-                className="h-14 w-14 rounded-full border-2 border-gold-500/80 object-cover"
+                className="h-14 w-14 rounded-full border-2 border-royal-500/70 object-cover"
               />
               <span className="leading-none">
                 <span className="block font-display text-2xl uppercase tracking-wide">
-                  Ahenkan <span className="text-gold-500">FA</span>
+                  Ahenkan <span className="text-royal-500">FA</span>
                 </span>
-                <span className="mt-1 block font-cond text-[11px] font-semibold uppercase tracking-[0.3em] text-paper/55">
+                <span className="mt-1 block font-cond text-[11px] font-semibold uppercase tracking-[0.3em] text-ink/50">
                   Developing Ghana's Future Stars
                 </span>
               </span>
             </Link>
-            <p className="mt-6 max-w-sm leading-relaxed text-paper/65">
+            <p className="mt-6 max-w-sm leading-relaxed text-ink/65">
               Premier football academy in Ghana offering youth development programs, elite training
               camps, and community outreach — unearthing world-class talent from Adeiso since 2025.
             </p>
@@ -54,21 +54,21 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="flex h-11 w-11 items-center justify-center border border-paper/20 text-paper/70 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500 hover:text-gold-500"
+                className="flex h-11 w-11 items-center justify-center border border-ink/15 text-ink/60 transition-all duration-200 hover:-translate-y-1 hover:border-royal-500 hover:text-royal-500"
               >
                 <FacebookIcon className="h-5 w-5" />
               </a>
               <a
                 href={`mailto:${CONTACT.email}`}
                 aria-label="Email"
-                className="flex h-11 w-11 items-center justify-center border border-paper/20 text-paper/70 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500 hover:text-gold-500"
+                className="flex h-11 w-11 items-center justify-center border border-ink/15 text-ink/60 transition-all duration-200 hover:-translate-y-1 hover:border-royal-500 hover:text-royal-500"
               >
                 <MailIcon className="h-5 w-5" />
               </a>
               <a
                 href={CONTACT.phoneHref}
                 aria-label="Call"
-                className="flex h-11 w-11 items-center justify-center border border-paper/20 text-paper/70 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500 hover:text-gold-500"
+                className="flex h-11 w-11 items-center justify-center border border-ink/15 text-ink/60 transition-all duration-200 hover:-translate-y-1 hover:border-royal-500 hover:text-royal-500"
               >
                 <PhoneIcon className="h-5 w-5" />
               </a>
@@ -76,13 +76,13 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="font-cond text-sm font-bold uppercase tracking-[0.24em] text-gold-500">Explore</h4>
+            <h4 className="font-cond text-sm font-bold uppercase tracking-[0.24em] text-royal-600">Explore</h4>
             <ul className="mt-5 space-y-2.5">
               {NAV.map((n) => (
                 <li key={n.to}>
                   <Link
                     to={n.to}
-                    className="text-paper/70 transition-all duration-200 hover:pl-1.5 hover:text-gold-500"
+                    className="text-ink/65 transition-all duration-200 hover:pl-1.5 hover:text-royal-500"
                   >
                     {n.label}
                   </Link>
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h4 className="font-cond text-sm font-bold uppercase tracking-[0.24em] text-gold-500">
+            <h4 className="font-cond text-sm font-bold uppercase tracking-[0.24em] text-royal-600">
               ahenkanfootballacademy.com
             </h4>
             <ul className="mt-5 space-y-2.5">
@@ -102,7 +102,7 @@ export default function Footer() {
                     href={l.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-paper/70 transition-all duration-200 hover:pl-1.5 hover:text-gold-500"
+                    className="text-ink/65 transition-all duration-200 hover:pl-1.5 hover:text-royal-500"
                   >
                     {l.label} ↗
                   </a>
@@ -112,30 +112,30 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h4 className="font-cond text-sm font-bold uppercase tracking-[0.24em] text-gold-500">
+            <h4 className="font-cond text-sm font-bold uppercase tracking-[0.24em] text-royal-600">
               Visit & Subscribe
             </h4>
-            <ul className="mt-5 space-y-3 text-sm text-paper/70">
+            <ul className="mt-5 space-y-3 text-sm text-ink/65">
               <li className="flex items-start gap-3">
-                <PinIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
+                <PinIcon className="mt-0.5 h-4 w-4 shrink-0 text-royal-500" />
                 {CONTACT.address}, {CONTACT.region}
               </li>
               <li className="flex items-center gap-3">
-                <PhoneIcon className="h-4 w-4 shrink-0 text-gold-500" />
-                <a href={CONTACT.phoneHref} className="transition-colors hover:text-gold-500">
+                <PhoneIcon className="h-4 w-4 shrink-0 text-royal-500" />
+                <a href={CONTACT.phoneHref} className="transition-colors hover:text-royal-500">
                   {CONTACT.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MailIcon className="h-4 w-4 shrink-0 text-gold-500" />
-                <a href={`mailto:${CONTACT.email}`} className="transition-colors hover:text-gold-500">
+                <MailIcon className="h-4 w-4 shrink-0 text-royal-500" />
+                <a href={`mailto:${CONTACT.email}`} className="transition-colors hover:text-royal-500">
                   {CONTACT.email}
                 </a>
               </li>
             </ul>
 
             {state === "done" ? (
-              <p className="mt-5 border-2 border-gold-500/60 bg-royal-900 px-4 py-3 font-cond text-sm font-bold uppercase tracking-[0.16em] text-gold-500">
+              <p className="mt-5 border-2 border-royal-500/50 bg-lav-100 px-4 py-3 font-cond text-sm font-bold uppercase tracking-[0.16em] text-royal-700">
                 ✓ You're on the list. See you at the grounds.
               </p>
             ) : (
@@ -153,8 +153,8 @@ export default function Footer() {
                       setState("idle");
                     }}
                     placeholder="you@example.com"
-                    className={`min-w-0 flex-1 border-2 bg-royal-950 px-4 py-3 text-sm text-paper placeholder:text-paper/35 outline-none transition-colors focus:border-gold-500 ${
-                      state === "error" ? "border-loss" : "border-paper/20"
+                    className={`min-w-0 flex-1 border-2 bg-lav-50 px-4 py-3 text-sm text-ink placeholder:text-ink/35 outline-none transition-colors focus:border-royal-500 ${
+                      state === "error" ? "border-loss" : "border-ink/15"
                     }`}
                   />
                   <button
@@ -171,12 +171,16 @@ export default function Footer() {
             )}
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 py-7">
-          <p className="font-cond text-sm uppercase tracking-[0.18em] text-paper/45">
+      {/* bottom strip */}
+      <div className="relative mt-0 bg-royal-950">
+        <div className="diagonal-stripes absolute inset-x-0 top-0 h-1.5" aria-hidden="true" />
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-7 sm:px-6">
+          <p className="font-cond text-sm uppercase tracking-[0.18em] text-paper/55">
             © 2026 Ahenkan Football Academy · Est. 2025
           </p>
-          <p className="font-cond text-sm uppercase tracking-[0.18em] text-gold-500/80">
+          <p className="font-cond text-sm uppercase tracking-[0.18em] text-gold-500">
             Talent · Wisdom · Knowledge at Work
           </p>
         </div>

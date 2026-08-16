@@ -52,7 +52,7 @@ function Countdown() {
                   { v: m, l: "Min" },
                   { v: s, l: "Sec" },
                 ].map((x) => (
-                  <div key={x.l} className="bg-ink px-2 py-5 text-center">
+                  <div key={x.l} className="bg-royal-900 px-2 py-5 text-center">
                     <p className="tabular font-display text-4xl text-gold-500 sm:text-5xl">
                       {String(x.v).padStart(2, "0")}
                     </p>
@@ -198,7 +198,7 @@ export default function Fixtures() {
                 <div className="mt-6 overflow-x-auto border-2 border-ink/10">
                   <table className="w-full min-w-[430px] text-left text-sm">
                     <thead>
-                      <tr className="bg-ink font-cond text-xs font-bold uppercase tracking-[0.18em] text-paper">
+                      <tr className="bg-royal-950 font-cond text-xs font-bold uppercase tracking-[0.18em] text-paper">
                         <th className="px-4 py-3">#</th>
                         <th className="px-2 py-3">Team</th>
                         <th className="px-2 py-3 text-center">P</th>

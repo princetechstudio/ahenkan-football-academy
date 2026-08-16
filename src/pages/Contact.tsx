@@ -62,15 +62,15 @@ export default function Contact() {
         sub="Apply for a trial, book a visit, or talk to our admissions team — we reply to every enquiry within 48 hours."
       />
 
-      <section className="relative overflow-hidden bg-ink py-24 text-paper lg:py-28">
-        <div className="pitch-lines absolute inset-0 opacity-50" aria-hidden="true" />
-        <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-royal-500/25 blur-[130px]" aria-hidden="true" />
+      <section className="relative overflow-hidden bg-paper py-24 text-ink lg:py-28">
+        <div className="pitch-lines-dark absolute inset-0" aria-hidden="true" />
+        <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-royal-500/12 blur-[130px]" aria-hidden="true" />
+        <div className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-gold-500/15 blur-[110px]" aria-hidden="true" />
 
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-12">
           {/* left */}
           <div className="lg:col-span-6">
             <SectionHead
-              onDark
               kicker="How Players Join"
               title="Three Steps to the Badge"
               sub="Every Ahenkan player starts the same way — one trial day, one chance to show us everything."
@@ -78,13 +78,13 @@ export default function Contact() {
             <div className="mt-10 space-y-6">
               {STEPS.map((s, i) => (
                 <Reveal key={s.no} delay={i * 110}>
-                  <div className="group flex gap-5 border-l-2 border-gold-500/40 pl-5 transition-all duration-300 hover:border-gold-500 hover:pl-6">
-                    <span className="font-display text-3xl text-gold-500/60 transition-colors duration-300 group-hover:text-gold-500">
+                  <div className="group flex gap-5 border-l-2 border-royal-500/40 pl-5 transition-all duration-300 hover:border-gold-500 hover:pl-6">
+                    <span className="font-display text-3xl text-royal-300 transition-colors duration-300 group-hover:text-royal-500">
                       {s.no}
                     </span>
                     <div>
                       <h3 className="font-display text-xl uppercase tracking-wide">{s.title}</h3>
-                      <p className="mt-1.5 max-w-md leading-relaxed text-paper/65">{s.desc}</p>
+                      <p className="mt-1.5 max-w-md leading-relaxed text-ink/65">{s.desc}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -92,24 +92,24 @@ export default function Contact() {
             </div>
 
             <Reveal delay={300}>
-              <div className="mt-10 grid grid-cols-1 gap-px border-2 border-paper/15 bg-paper/15 sm:grid-cols-2">
+              <div className="mt-10 grid grid-cols-1 gap-px border-2 border-ink/10 bg-ink/10 sm:grid-cols-2">
                 {[
                   { Icon: PhoneIcon, label: "Call Us", value: CONTACT.phone, sub: `or ${CONTACT.altPhone}`, href: CONTACT.phoneHref },
                   { Icon: MailIcon, label: "Email Us", value: CONTACT.email, sub: "Replies within 48h", href: `mailto:${CONTACT.email}` },
                   { Icon: PinIcon, label: "Visit Us", value: CONTACT.address, sub: CONTACT.region },
                   { Icon: ClockIcon, label: "Trial Days", value: "9am – 3pm", sub: "GH₵200 registration · Ages 15–16" },
                 ].map((c) => (
-                  <div key={c.label} className="group bg-royal-950/80 p-6 transition-colors duration-300 hover:bg-royal-900">
-                    <c.Icon className="h-6 w-6 text-gold-500" />
-                    <p className="mt-3 font-cond text-xs font-bold uppercase tracking-[0.24em] text-gold-500">{c.label}</p>
+                  <div key={c.label} className="group bg-lav-50 p-6 transition-colors duration-300 hover:bg-lav-100">
+                    <c.Icon className="h-6 w-6 text-royal-500" />
+                    <p className="mt-3 font-cond text-xs font-bold uppercase tracking-[0.24em] text-royal-600">{c.label}</p>
                     {c.href ? (
-                      <a href={c.href} className="mt-1.5 block break-words font-semibold transition-colors hover:text-gold-500">
+                      <a href={c.href} className="mt-1.5 block break-words font-semibold transition-colors hover:text-royal-500">
                         {c.value}
                       </a>
                     ) : (
                       <p className="mt-1.5 break-words font-semibold">{c.value}</p>
                     )}
-                    <p className="mt-1 text-xs text-paper/50">{c.sub}</p>
+                    <p className="mt-1 text-xs text-ink/50">{c.sub}</p>
                   </div>
                 ))}
               </div>
@@ -120,7 +120,7 @@ export default function Contact() {
                 href={CONTACT.facebook}
                 target="_blank"
                 rel="noreferrer"
-                className="group mt-6 inline-flex items-center gap-3 border-2 border-paper/20 px-6 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] transition-all duration-200 hover:border-gold-500 hover:text-gold-500"
+                className="group mt-6 inline-flex items-center gap-3 border-2 border-ink/20 px-6 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] transition-all duration-200 hover:border-royal-500 hover:text-royal-500"
               >
                 <FacebookIcon className="h-5 w-5" />
                 Follow us on Facebook
@@ -132,8 +132,8 @@ export default function Contact() {
           {/* form */}
           <Reveal variant="right" delay={150} className="lg:col-span-6">
             <div className="relative">
-              <div className="absolute -left-4 -top-4 h-full w-full border-2 border-gold-500/60" aria-hidden="true" />
-              <div className="relative bg-lav-50 p-7 text-ink shadow-[0_30px_80px_rgba(0,0,0,0.5)] sm:p-9">
+              <div className="absolute -left-4 -top-4 h-full w-full border-2 border-gold-500" aria-hidden="true" />
+              <div className="relative bg-lav-50 p-7 text-ink shadow-[0_30px_80px_rgba(126,1,183,0.18)] sm:p-9">
                 {done ? (
                   <div className="py-8 text-center">
                     <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-royal-500 text-paper">
@@ -156,7 +156,7 @@ export default function Contact() {
                         setForm(EMPTY);
                         setDone(false);
                       }}
-                      className="mt-7 inline-flex items-center gap-2 border-2 border-ink px-6 py-3 font-cond text-base font-bold uppercase tracking-[0.14em] transition-all duration-200 hover:bg-ink hover:text-gold-500"
+                      className="mt-7 inline-flex items-center gap-2 border-2 border-royal-500 px-6 py-3 font-cond text-base font-bold uppercase tracking-[0.14em] text-royal-600 transition-all duration-200 hover:bg-royal-500 hover:text-paper"
                     >
                       Submit another application
                     </button>

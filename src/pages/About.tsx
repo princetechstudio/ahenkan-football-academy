@@ -37,7 +37,7 @@ function Story() {
                   alt="Aerial view of the Ahenkan training grounds"
                   className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
-                <figcaption className="absolute bottom-0 left-0 bg-ink px-4 py-2 font-cond text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
+                <figcaption className="absolute bottom-0 left-0 bg-royal-950 px-4 py-2 font-cond text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
                   Our grounds · Adeiso, Upper West Akyem
                 </figcaption>
               </figure>
@@ -130,7 +130,7 @@ function Leaders() {
                     alt={l.name}
                     className="aspect-[4/3] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                   />
-                  <span className="absolute left-0 top-5 bg-ink px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.2em] text-gold-500">
+                  <span className="absolute left-0 top-5 bg-royal-500 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.2em] text-paper">
                     {l.role}
                   </span>
                 </div>
@@ -148,7 +148,7 @@ function Leaders() {
             <p className="font-display text-2xl uppercase text-paper sm:text-3xl">
               Write the next chapter <span className="text-gold-500">with us.</span>
             </p>
-            <Link to="/contact" className="group inline-flex items-center gap-3 bg-ink px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-gold-500 transition-all duration-200 hover:-translate-y-0.5">
+            <Link to="/contact" className="group inline-flex items-center gap-3 bg-paper px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-royal-700 transition-all duration-200 hover:-translate-y-0.5 hover:text-royal-950 hover:shadow-[0_14px_36px_rgba(1,1,1,0.2)]">
               Join the academy
               <ArrowIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
             </Link>
@@ -157,9 +157,9 @@ function Leaders() {
 
         <Reveal delay={120}>
           <p className="mt-10 flex flex-wrap items-center justify-center gap-3 text-center font-cond text-sm font-semibold uppercase tracking-[0.2em] text-ink/45">
-            <StarIcon className="h-4 w-4 text-gold-500" />
+            <StarIcon className="h-4 w-4 text-gold-500 drop-shadow-[0_1px_1px_rgba(1,1,1,0.35)]" />
             Talent · Wisdom · Knowledge at Work
-            <StarIcon className="h-4 w-4 text-gold-500" />
+            <StarIcon className="h-4 w-4 text-gold-500 drop-shadow-[0_1px_1px_rgba(1,1,1,0.35)]" />
           </p>
         </Reveal>
       </div>

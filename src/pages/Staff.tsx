@@ -56,7 +56,7 @@ export default function Staff() {
               <div className="absolute -left-4 -top-4 h-full w-full border-2 border-gold-500/60" aria-hidden="true" />
               <figure className="relative overflow-hidden border-2 border-paper/15">
                 <img src={head.img} alt={head.name} className="anim-kenburns aspect-[4/5] w-full object-cover" />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-ink/85 px-5 py-3 backdrop-blur-sm">
+                <figcaption className="absolute inset-x-0 bottom-0 bg-royal-950/90 px-5 py-3 backdrop-blur-sm">
                   <p className="font-display text-xl uppercase">{head.name}</p>
                   <p className="font-cond text-xs font-bold uppercase tracking-[0.22em] text-gold-500">
                     {head.role} · {head.qual}
@@ -145,7 +145,7 @@ export default function Staff() {
 
             {/* team photo card */}
             <Reveal delay={330}>
-              <article className="group flex h-full flex-col overflow-hidden border-2 border-ink bg-ink text-paper">
+              <article className="group flex h-full flex-col overflow-hidden border-2 border-royal-950 bg-royal-950 text-paper">
                 <div className="relative overflow-hidden">
                   <img
                     src={IMG.team}

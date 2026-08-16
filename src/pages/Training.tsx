@@ -11,7 +11,7 @@ const DOT: Record<string, string> = {
   "Physical Foundations": "bg-royal-300",
   "Small-Sided Games": "bg-gold-400",
   "Finishing & Striking": "bg-loss",
-  "School Support": "bg-paper",
+  "School Support": "bg-royal-200",
   "Match Simulation": "bg-royal-400",
   "Set Pieces & GK Unit": "bg-gold-500",
   "Recovery & Mobility": "bg-royal-300",
@@ -22,16 +22,15 @@ const DOT: Record<string, string> = {
 function WeekGrid() {
   const [activeDay, setActiveDay] = useState(0);
   return (
-    <section className="relative bg-ink py-24 text-paper lg:py-28">
+    <section className="relative bg-paper py-24 text-ink lg:py-28">
       <span
-        className="text-outline pointer-events-none absolute bottom-0 left-0 select-none font-display text-[16vw] uppercase leading-none opacity-40 lg:text-[180px]"
+        className="text-outline-royal pointer-events-none absolute bottom-0 left-0 select-none font-display text-[16vw] uppercase leading-none opacity-40 lg:text-[180px]"
         aria-hidden="true"
       >
         Weekly
       </span>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHead
-          onDark
           kicker="The Ahenkan Week · 9am – 3pm"
           title="Weekly Training Schedule"
           sub="Six days a week at our Adeiso grounds — technique in the morning, tactics and match simulation in the afternoon, schooling support in between."
@@ -45,7 +44,7 @@ function WeekGrid() {
               className={`border px-3 py-3 font-cond text-base font-bold uppercase tracking-[0.14em] transition-colors ${
                 activeDay === i
                   ? "border-gold-500 bg-gold-500 text-ink"
-                  : "border-paper/20 text-paper/75 hover:border-gold-500/60"
+                  : "border-ink/15 text-ink/70 hover:border-royal-500 hover:text-royal-500"
               }`}
             >
               {d.day}
@@ -54,28 +53,28 @@ function WeekGrid() {
           ))}
         </div>
 
-        <div className="mt-4 border border-paper/12 bg-royal-950/70 lg:hidden">
+        <div className="mt-4 border border-ink/10 bg-lav-50 lg:hidden">
           <div className="space-y-3 p-5">
             {SCHEDULE[activeDay].sessions.map((s, i) => (
-              <div key={i} className="flex items-center justify-between gap-3 border border-paper/10 bg-royal-900/70 px-4 py-3.5">
+              <div key={i} className="flex items-center justify-between gap-3 border border-ink/10 bg-paper px-4 py-3.5">
                 <span className="flex items-center gap-3">
                   <span className={`h-2 w-2 ${DOT[s.program] ?? "bg-gold-500"}`} />
                   <span>
                     <span className="block font-cond text-base font-semibold uppercase tracking-widest">{s.program}</span>
-                    <span className="text-xs text-paper/55">{s.pitch}</span>
+                    <span className="text-xs text-ink/50">{s.pitch}</span>
                   </span>
                 </span>
-                <span className="tabular font-cond text-sm font-bold text-gold-500">{s.time}</span>
+                <span className="tabular font-cond text-sm font-bold text-royal-600">{s.time}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 hidden grid-cols-6 gap-px border border-paper/12 bg-paper/10 lg:grid">
+        <div className="mt-12 hidden grid-cols-6 gap-px border border-ink/10 bg-ink/10 lg:grid">
           {SCHEDULE.map((d, di) => (
             <Reveal key={d.day} delay={di * 70} className="h-full">
-              <div className="group flex h-full min-h-[300px] flex-col bg-ink p-5 transition-colors duration-300 hover:bg-royal-950">
-                <div className="flex items-baseline justify-between border-b-2 border-gold-500/70 pb-3">
+              <div className="group flex h-full min-h-[300px] flex-col bg-lav-50 p-5 transition-colors duration-300 hover:bg-paper">
+                <div className="flex items-baseline justify-between border-b-2 border-royal-500/60 pb-3">
                   <h3 className="font-display text-xl uppercase">{d.day}</h3>
                   {d.note && (
                     <span className="bg-loss px-2 py-0.5 font-cond text-[11px] font-bold uppercase tracking-[0.14em] text-paper">
@@ -87,14 +86,14 @@ function WeekGrid() {
                   {d.sessions.map((s, i) => (
                     <li
                       key={i}
-                      className="border border-paper/10 bg-royal-900/70 px-3 py-2.5 transition-transform duration-300 group-hover:translate-x-1"
+                      className="border border-ink/10 bg-paper px-3 py-2.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:border-royal-500/40"
                     >
-                      <p className="tabular font-cond text-sm font-bold uppercase tracking-widest text-gold-500">{s.time}</p>
+                      <p className="tabular font-cond text-sm font-bold uppercase tracking-widest text-royal-600">{s.time}</p>
                       <p className="mt-1 flex items-center gap-2 text-sm font-semibold">
                         <span className={`h-1.5 w-1.5 shrink-0 ${DOT[s.program] ?? "bg-gold-500"}`} />
                         {s.program}
                       </p>
-                      <p className="mt-0.5 text-xs text-paper/55">{s.pitch}</p>
+                      <p className="mt-0.5 text-xs text-ink/50">{s.pitch}</p>
                     </li>
                   ))}
                 </ul>
@@ -242,7 +241,7 @@ export default function Training() {
           <p className="font-display text-2xl uppercase text-paper sm:text-3xl">
             Ready to train with us? <span className="text-gold-500">Trials are open.</span>
           </p>
-          <Link to="/contact" className="group inline-flex items-center gap-3 bg-ink px-7 py-4 font-cond text-base font-bold uppercase tracking-[0.14em] text-gold-500 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(1,1,1,0.4)]">
+          <Link to="/contact" className="group inline-flex items-center gap-3 bg-paper px-7 py-4 font-cond text-base font-bold uppercase tracking-[0.14em] text-royal-700 transition-all duration-200 hover:-translate-y-0.5 hover:text-royal-950 hover:shadow-[0_14px_36px_rgba(1,1,1,0.25)]">
             Book a trial day
             <ArrowIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
           </Link>

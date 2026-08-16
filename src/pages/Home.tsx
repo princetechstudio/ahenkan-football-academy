@@ -19,18 +19,18 @@ function Hero() {
   const [president, patron] = LEADERSHIP;
 
   return (
-    <section className="relative overflow-hidden bg-ink pt-24 lg:pt-32">
-      <div className="pitch-lines absolute inset-0 opacity-70" aria-hidden="true" />
+    <section className="relative overflow-hidden bg-paper pt-24 lg:pt-32">
+      <div className="pitch-lines-dark absolute inset-0" aria-hidden="true" />
       <div
-        className="absolute -left-40 top-10 h-[480px] w-[480px] rounded-full bg-royal-500/30 blur-[140px]"
+        className="absolute -left-40 top-10 h-[480px] w-[480px] rounded-full bg-royal-500/15 blur-[140px]"
         aria-hidden="true"
       />
       <div
-        className="absolute -right-32 bottom-0 h-[420px] w-[420px] rounded-full bg-royal-700/40 blur-[130px]"
+        className="absolute -right-32 bottom-0 h-[420px] w-[420px] rounded-full bg-royal-300/25 blur-[130px]"
         aria-hidden="true"
       />
       <svg
-        className="absolute -right-44 -top-44 h-[680px] w-[680px] text-paper/[0.05]"
+        className="absolute -right-44 -top-44 h-[680px] w-[680px] text-royal-500/10"
         viewBox="0 0 200 200"
         fill="none"
         aria-hidden="true"
@@ -43,37 +43,37 @@ function Hero() {
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-4 pb-20 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pb-24">
         {/* left copy */}
         <div className="lg:col-span-6">
-          <p className="flex flex-wrap items-center gap-3 font-cond text-sm font-semibold uppercase tracking-[0.28em] text-gold-500">
-            <img src={IMG.flag} alt="Ahenkan Academy flag" className="h-6 w-9 border border-paper/30 object-cover" />
+          <p className="flex flex-wrap items-center gap-3 font-cond text-sm font-semibold uppercase tracking-[0.28em] text-royal-600">
+            <img src={IMG.flag} alt="Ahenkan Academy flag" className="h-6 w-9 border border-ink/15 object-cover" />
             Est. 2025 · Adeiso, Upper West Akyem
           </p>
 
-          <h1 className="mt-6 font-display uppercase leading-[0.9] text-paper">
+          <h1 className="mt-6 font-display uppercase leading-[0.9] text-ink">
             <span className="mask-line text-[13vw] sm:text-7xl lg:text-[84px]">
               <span style={{ animationDelay: "0.1s" }}>Unearthing</span>
             </span>
             <span className="mask-line text-[10.5vw] sm:text-6xl lg:text-[68px]">
               <span style={{ animationDelay: "0.26s" }}>Ghana's</span>
             </span>
-            <span className="mask-line text-[12vw] text-gold-500 sm:text-7xl lg:text-[80px]">
+            <span className="mask-line text-[12vw] text-royal-500 sm:text-7xl lg:text-[80px]">
               <span style={{ animationDelay: "0.4s" }}>World-Class</span>
             </span>
-            <span className="mask-line text-[12vw] text-outline-gold sm:text-7xl lg:text-[80px]">
+            <span className="mask-line text-[12vw] text-outline-royal sm:text-7xl lg:text-[80px]">
               <span style={{ animationDelay: "0.52s" }}>Talent</span>
             </span>
           </h1>
 
-          <p ref={ref} className="mt-5 font-cond text-lg font-semibold tracking-[0.2em] text-royal-300">
+          <p ref={ref} className="mt-5 font-cond text-lg font-semibold tracking-[0.2em] text-royal-500">
             {decoded || "\u00A0"}
           </p>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/75">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/70">
             At Ahenkan Football Academy, we discover and develop football talent, guiding young
             players to become world-class champions through expert training and dedicated
             mentorship.
           </p>
 
-          <div className="mt-8 flex items-stretch gap-4 border-2 border-gold-500/60 bg-royal-900/60 px-5 py-4">
+          <div className="mt-8 flex items-stretch gap-4 border-2 border-gold-500 bg-royal-900 px-5 py-4 shadow-[0_18px_44px_rgba(94,0,138,0.25)]">
             <span className="hidden w-1.5 self-stretch bg-gold-500 sm:block" aria-hidden="true" />
             <div>
               <p className="font-cond text-xs font-bold uppercase tracking-[0.26em] text-gold-500">Our Mission</p>
@@ -88,7 +88,7 @@ function Hero() {
               Join Our Academy
               <ArrowIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
             </Link>
-            <Link to="/training" className="btn-ghost-light">
+            <Link to="/training" className="btn-ghost-dark">
               Training Programs
             </Link>
           </div>
@@ -103,13 +103,13 @@ function Hero() {
           <div className="relative mx-auto max-w-xl">
             {/* Royal Patron — back frame */}
             <Reveal variant="right" delay={150}>
-              <figure className="group relative ml-auto w-[78%] overflow-hidden border-2 border-paper/20 bg-royal-900">
+              <figure className="group relative ml-auto w-[78%] overflow-hidden border-2 border-ink/10 bg-royal-950">
                 <img
                   src={patron.img}
                   alt={patron.name}
                   className="anim-kenburns aspect-[4/5] w-full object-cover"
                 />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-ink/85 px-4 py-3 backdrop-blur-sm">
+                <figcaption className="absolute inset-x-0 bottom-0 bg-royal-950/90 px-4 py-3 backdrop-blur-sm">
                   <p className="font-display text-base uppercase leading-tight text-paper">{patron.name}</p>
                   <p className="mt-0.5 font-cond text-xs font-bold uppercase tracking-[0.22em] text-gold-500">
                     {patron.role}
@@ -120,13 +120,13 @@ function Hero() {
 
             {/* President — front frame */}
             <Reveal variant="left" delay={300}>
-              <figure className="group absolute -bottom-10 -left-2 w-[62%] overflow-hidden border-2 border-gold-500 bg-ink shadow-[0_30px_70px_rgba(0,0,0,0.6)] sm:-left-6">
+              <figure className="group absolute -bottom-10 -left-2 w-[62%] overflow-hidden border-2 border-gold-500 bg-royal-950 shadow-[0_30px_70px_rgba(94,0,138,0.35)] sm:-left-6">
                 <img
                   src={president.img}
                   alt={president.name}
                   className="anim-kenburns aspect-[4/5] w-full object-cover"
                 />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-ink/85 px-4 py-3 backdrop-blur-sm">
+                <figcaption className="absolute inset-x-0 bottom-0 bg-royal-950/90 px-4 py-3 backdrop-blur-sm">
                   <p className="font-display text-base uppercase leading-tight text-paper">{president.name}</p>
                   <p className="mt-0.5 font-cond text-xs font-bold uppercase tracking-[0.22em] text-gold-500">
                     {president.role}
@@ -136,10 +136,10 @@ function Hero() {
             </Reveal>
 
             {/* floating flag + badge */}
-            <div className="anim-drift absolute -top-4 left-4 z-10 border border-paper/25 bg-ink/90 px-3 py-2 shadow-lg backdrop-blur-sm">
+            <div className="anim-drift absolute -top-4 left-4 z-10 border border-ink/10 bg-paper px-3 py-2 shadow-[0_14px_34px_rgba(94,0,138,0.2)]">
               <img src={IMG.flag} alt="" className="h-8 w-12 object-cover" />
             </div>
-            <div className="absolute -bottom-14 right-2 z-10 bg-gold-500 px-4 py-3 text-ink shadow-[0_16px_40px_rgba(255,255,0,0.25)]">
+            <div className="absolute -bottom-14 right-2 z-10 bg-gold-500 px-4 py-3 text-ink shadow-[0_16px_40px_rgba(255,255,0,0.35)]">
               <p className="font-display text-3xl leading-none">EST.</p>
               <p className="font-display text-4xl leading-none">2025</p>
             </div>
@@ -154,7 +154,7 @@ function Hero() {
 function HeroStats() {
   const { ref, inView } = useInView<HTMLDivElement>(0.3);
   return (
-    <div ref={ref} className="mt-12 grid max-w-xl grid-cols-3 gap-px border-t border-paper/15 pt-8">
+    <div ref={ref} className="mt-12 grid max-w-xl grid-cols-3 gap-px border-t border-ink/10 pt-8">
       {STATS.map((s) => (
         <Stat key={s.label} value={s.value} suffix={s.suffix} label={s.label} start={inView} />
       ))}
@@ -166,11 +166,11 @@ function Stat({ value, suffix, label, start }: { value: number; suffix: string; 
   const n = useCountUp(value, 1600, start);
   return (
     <div className="group pr-4">
-      <p className="tabular font-display text-4xl text-gold-500 transition-transform duration-300 group-hover:-translate-y-1 sm:text-5xl">
+      <p className="tabular font-display text-4xl text-royal-500 transition-transform duration-300 group-hover:-translate-y-1 sm:text-5xl">
         {n}
         {suffix}
       </p>
-      <p className="mt-1 font-cond text-sm font-semibold uppercase tracking-[0.18em] text-paper/70">{label}</p>
+      <p className="mt-1 font-cond text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">{label}</p>
     </div>
   );
 }
@@ -335,7 +335,7 @@ function Leadership() {
                     alt={l.name}
                     className="aspect-[4/3] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                   />
-                  <span className="absolute left-0 top-5 bg-ink px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.2em] text-gold-500">
+                  <span className="absolute left-0 top-5 bg-royal-500 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.2em] text-paper">
                     {l.role}
                   </span>
                 </div>
@@ -514,7 +514,7 @@ function News() {
 /* ---------------- CTA band ---------------- */
 function CtaBand() {
   return (
-    <section className="relative overflow-hidden bg-ink py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-royal-950 py-20 lg:py-24">
       <div
         className="absolute -right-32 -top-24 h-96 w-96 rounded-full bg-royal-500/30 blur-[120px]"
         aria-hidden="true"

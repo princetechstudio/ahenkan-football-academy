@@ -213,38 +213,38 @@ export function PageHead({
   crumb: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-ink pb-16 pt-40 lg:pb-20 lg:pt-48">
-      <div className="pitch-lines absolute inset-0 opacity-60" aria-hidden="true" />
+    <section className="relative overflow-hidden border-b-2 border-royal-500/15 bg-lav-50 pb-16 pt-40 lg:pb-20 lg:pt-48">
+      <div className="pitch-lines-dark absolute inset-0" aria-hidden="true" />
       <div
-        className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-royal-500/25 blur-[120px]"
+        className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-royal-500/15 blur-[120px]"
         aria-hidden="true"
       />
       <div
-        className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-gold-500/10 blur-[100px]"
+        className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-gold-500/25 blur-[100px]"
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <p className="flex items-center gap-2 font-cond text-sm font-semibold uppercase tracking-[0.24em] text-paper/45">
-          <Link to="/" className="transition-colors hover:text-gold-500">
+        <p className="flex items-center gap-2 font-cond text-sm font-semibold uppercase tracking-[0.24em] text-ink/45">
+          <Link to="/" className="transition-colors hover:text-royal-500">
             Home
           </Link>
-          <span className="text-gold-500">/</span>
-          <span className="text-paper/70">{crumb}</span>
+          <span className="text-royal-500">/</span>
+          <span className="text-ink/70">{crumb}</span>
         </p>
         <Reveal>
-          <Kicker>{kicker}</Kicker>
+          <Kicker tone="royal">{kicker}</Kicker>
         </Reveal>
-        <h1 className="mt-4 font-display text-5xl uppercase leading-[0.92] text-paper sm:text-6xl lg:text-7xl">
+        <h1 className="mt-4 font-display text-5xl uppercase leading-[0.92] text-ink sm:text-6xl lg:text-7xl">
           <span className="mask-line">
             <span style={{ animationDelay: "0.1s" }}>{title}</span>
           </span>
         </h1>
         {sub && (
           <Reveal delay={200}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/70">{sub}</p>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/65">{sub}</p>
           </Reveal>
         )}
-        <div className="anim-glow mt-10 h-1 w-24 bg-gold-500" aria-hidden="true" />
+        <div className="anim-glow mt-10 h-1 w-24 bg-gold-500 shadow-[0_0_18px_rgba(255,255,0,0.7)]" aria-hidden="true" />
       </div>
     </section>
   );

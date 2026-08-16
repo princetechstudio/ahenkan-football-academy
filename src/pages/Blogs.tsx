@@ -83,13 +83,13 @@ export default function Blogs() {
                         alt={n.title}
                         className="aspect-[16/10] w-full object-cover transition-transform duration-700 hover:scale-[1.05]"
                       />
-                      <span className="absolute left-0 top-4 bg-ink px-3 py-1 font-cond text-xs font-bold uppercase tracking-[0.18em] text-gold-500">
+                      <span className="absolute left-0 top-4 bg-royal-950 px-3 py-1 font-cond text-xs font-bold uppercase tracking-[0.18em] text-gold-500">
                         {n.cat}
                       </span>
                     </div>
                     <div className="flex flex-1 flex-col p-6">
                       <p className="tabular flex items-center gap-2 font-cond text-xs font-bold uppercase tracking-[0.18em] text-ink/45">
-                        <StarIcon className="h-3 w-3 text-gold-500" /> {n.date}
+                        <StarIcon className="h-3 w-3 text-gold-500 drop-shadow-[0_1px_1px_rgba(1,1,1,0.35)]" /> {n.date}
                       </p>
                       <h3 className="mt-3 font-display text-xl uppercase leading-snug tracking-wide">{n.title}</h3>
                       <p className="mt-3 text-sm leading-relaxed text-ink/65">
