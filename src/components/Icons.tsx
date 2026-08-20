@@ -117,6 +117,20 @@ export function FacebookIcon({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function BellIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M12 3.5a4.5 4.5 0 0 1 4.5 4.5V10c0 2.2.8 3.5 2.2 5H5.3c1.4-1.5 2.2-2.8 2.2-5V8a4.5 4.5 0 0 1 4.5-4.5Zm0 17a2.5 2.5 0 0 1-2.4-1.8h4.8A2.5 2.5 0 0 1 12 20.5Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function BallIcon({ className = "h-6 w-6" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">

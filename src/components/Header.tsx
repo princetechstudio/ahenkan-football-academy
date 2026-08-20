@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { CONTACT, IMG, NAV } from "../data";
 import { CloseIcon, FacebookIcon, MailIcon, MenuIcon, PhoneIcon, PinIcon } from "./Icons";
+import { NotificationBell } from "./NotificationToggle";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -61,31 +62,31 @@ export default function Header() {
             : "border-bone-50/10 bg-pitch-950/70 backdrop-blur-sm"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
-          <Link to="/" className="group flex items-center gap-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-2.5 sm:gap-5 sm:px-6 sm:py-3">
+          <Link to="/" className="group flex min-w-0 items-center gap-2 sm:gap-3">
             <img
               src={IMG.logo}
               alt="Ahenkan Football Academy crest"
-              className="h-12 w-12 rounded-full border-2 border-gold-500/80 object-cover shadow-[0_0_0_3px_rgba(5,19,12,1)] transition-transform duration-300 group-hover:scale-105"
+              className="h-10 w-10 shrink-0 rounded-full border-2 border-gold-500/80 object-cover shadow-[0_0_0_3px_rgba(5,19,12,1)] transition-transform duration-300 group-hover:scale-105 sm:h-11 sm:w-11"
             />
-            <span className="leading-none">
-              <span className="block font-display text-xl uppercase tracking-wide text-bone-50">
-                Ahenkan <span className="text-gold-500">FA</span>
+            <span className="min-w-0 leading-none">
+              <span className="block truncate font-display text-sm uppercase tracking-wide text-bone-50 sm:text-base">
+                Ahenkan <span className="text-gold-500">Football Academy</span>
               </span>
-              <span className="mt-1 block font-cond text-[10px] font-semibold uppercase tracking-[0.3em] text-bone-50/55">
+              <span className="mt-1 block truncate font-cond text-[9px] font-semibold uppercase tracking-[0.2em] text-bone-50/55 sm:text-[10px]">
                 Talent · Wisdom · Knowledge
               </span>
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-4 xl:gap-5 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-2 xl:gap-3 lg:flex" aria-label="Primary">
             {NAV.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
                 end={n.to === "/"}
                 className={({ isActive }) =>
-                  `nav-link font-cond text-sm xl:text-base font-semibold uppercase tracking-[0.14em] transition-colors ${
+                  `nav-link whitespace-nowrap font-cond text-[11px] xl:text-sm font-semibold uppercase tracking-[0.08em] transition-colors ${
                     isActive ? "nav-active text-gold-400" : "text-bone-50/85 hover:text-bone-50"
                   }`
                 }
@@ -95,10 +96,11 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <NotificationBell />
             <Link
               to="/contact"
-              className="hidden items-center gap-2 bg-gold-500 px-5 py-2.5 font-cond text-base font-bold uppercase tracking-[0.12em] text-pitch-950 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-[0_10px_30px_rgba(242,183,10,0.3)] sm:inline-flex"
+              className="hidden items-center gap-2 bg-gold-500 px-3.5 py-2 font-cond text-sm font-bold uppercase tracking-[0.08em] text-pitch-950 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-[0_10px_30px_rgba(242,183,10,0.3)] sm:inline-flex"
             >
               Apply Now
             </Link>
@@ -127,7 +129,7 @@ export default function Header() {
                   to={n.to}
                   end={n.to === "/"}
                   className={({ isActive }) =>
-                    `flex items-center justify-between border-b border-bone-50/10 px-2 py-3 font-cond text-xl font-semibold uppercase tracking-[0.14em] transition-colors ${
+                    `flex items-center justify-between border-b border-bone-50/10 px-2 py-2.5 font-cond text-lg font-semibold uppercase tracking-[0.1em] transition-colors ${
                       isActive ? "text-gold-400" : "text-bone-50/85 hover:text-gold-400"
                     }`
                   }

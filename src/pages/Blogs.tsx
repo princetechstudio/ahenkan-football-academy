@@ -2,10 +2,31 @@ import { useState } from "react";
 import { useBlogs } from "../hooks/useContent";
 import { PageHead, Reveal } from "../lib";
 import { ArrowIcon, StarIcon } from "../components/Icons";
+import { BlogReactions } from "../components/BlogReactions";
+import { BlogComments } from "../components/BlogComments";
 
 export default function Blogs() {
   const blogs = useBlogs();
   const [expanded, setExpanded] = useState<string | number | null>(null);
+
+  if (blogs.length === 0) {
+    return (
+      <>
+        <PageHead
+          crumb="Blogs"
+          kicker="News from the Grounds"
+          title="Academy Blogs"
+          sub="Announcements, development insight and community stories from Ahenkan Football Academy — updated from the touchline."
+        />
+        <section className="relative bg-bone-100 py-20 text-pitch-900 lg:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 text-center">
+            <p className="text-pitch-600">No blogs available yet. Check back soon!</p>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   const featured = blogs.find((b) => b.featured) ?? blogs[0];
   const rest = blogs.filter((b) => b.id !== featured.id);
 
@@ -29,12 +50,24 @@ export default function Blogs() {
                   : "border-pitch-900/15 bg-bone-50 hover:border-gold-600 hover:shadow-[0_20px_50px_rgba(8,32,21,0.14)]"
               }`}
             >
-              <div className="relative overflow-hidden lg:col-span-6">
-                <img
-                  src={featured.img}
-                  alt={featured.title}
-                  className="h-full min-h-64 w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
+              <div className="relative overflow-hidden lg:col-span-6 bg-pitch-900 min-h-64 flex items-center justify-center">
+                {featured.video ? (
+                  <video
+                    src={featured.video}
+                    controls
+                    className="h-full w-full object-cover"
+                  />
+                ) : featured.img ? (
+                  <img
+                    src={featured.img}
+                    alt={featured.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                ) : (
+                  <div className="text-center text-bone-50">
+                    <p className="text-sm">No media available</p>
+                  </div>
+                )}
                 <span className="absolute left-0 top-6 bg-gold-500 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.18em] text-pitch-950">
                   ★ Featured
                 </span>
@@ -52,8 +85,14 @@ export default function Blogs() {
                   {featured.title}
                 </h2>
                 <p className="mt-5 leading-relaxed text-pitch-900/70">
-                  {expanded === featured.id ? featured.full : featured.excerpt}
+                  {expanded === featured.id ? featured.content : featured.excerpt}
                 </p>
+                {expanded === featured.id && (
+                  <div className="mt-6">
+                    <BlogReactions blogId={String(featured.id)} />
+                    <BlogComments blogId={String(featured.id)} />
+                  </div>
+                )}
                 <button
                   onClick={() => setExpanded(expanded === featured.id ? null : featured.id)}
                   className="group/b mt-7 inline-flex items-center gap-3 self-start font-cond text-base font-bold uppercase tracking-[0.16em] text-pitch-600 transition-colors hover:text-gold-700"
@@ -78,12 +117,24 @@ export default function Blogs() {
                         : "border-pitch-900/15 hover:-translate-y-1.5 hover:border-gold-600 hover:shadow-[0_18px_44px_rgba(8,32,21,0.14)]"
                     }`}
                   >
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={n.img}
-                        alt={n.title}
-                        className="aspect-[16/10] w-full object-cover transition-transform duration-700 hover:scale-[1.05]"
-                      />
+                    <div className="relative overflow-hidden bg-pitch-900 aspect-[16/10] flex items-center justify-center">
+                      {n.video ? (
+                        <video
+                          src={n.video}
+                          controls
+                          className="w-full h-full object-cover"
+                        />
+                      ) : n.img ? (
+                        <img
+                          src={n.img}
+                          alt={n.title}
+                          className="aspect-[16/10] w-full object-cover transition-transform duration-700 hover:scale-[1.05]"
+                        />
+                      ) : (
+                        <div className="text-center text-bone-50">
+                          <p className="text-sm">No media available</p>
+                        </div>
+                      )}
                       <span className="absolute left-0 top-4 bg-pitch-950 px-3 py-1 font-cond text-xs font-bold uppercase tracking-[0.18em] text-gold-500">
                         {n.cat}
                       </span>
@@ -94,8 +145,14 @@ export default function Blogs() {
                       </p>
                       <h3 className="mt-3 font-display text-xl uppercase leading-snug tracking-wide">{n.title}</h3>
                       <p className="mt-3 text-sm leading-relaxed text-pitch-900/65">
-                        {open ? n.full : n.excerpt}
+                        {open ? n.content : n.excerpt}
                       </p>
+                      {open && (
+                        <div className="mt-6">
+                          <BlogReactions blogId={String(n.id)} />
+                          <BlogComments blogId={String(n.id)} />
+                        </div>
+                      )}
                       <button
                         onClick={() => setExpanded(open ? null : n.id)}
                         className="group/b mt-auto inline-flex items-center gap-2 self-start pt-5 font-cond text-sm font-bold uppercase tracking-[0.14em] text-pitch-600 transition-colors hover:text-gold-700"

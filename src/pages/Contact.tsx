@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { CONTACT, PROGRAMS, STEPS } from "../data";
 import { PageHead, Reveal, SectionHead } from "../lib";
 import { ArrowIcon, CheckIcon, ClockIcon, FacebookIcon, MailIcon, PhoneIcon, PinIcon } from "../components/Icons";
+import { supabase } from "../supabase";
 
 type Form = {
   player: string;
@@ -32,13 +33,15 @@ export default function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState(false);
   const [refCode, setRefCode] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const set = (k: keyof Form) => (e: { target: { value: string } }) => {
     setForm((f) => ({ ...f, [k]: e.target.value }));
     setErrors((er) => ({ ...er, [k]: "" }));
   };
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
     const er: Record<string, string> = {};
     if (form.player.trim().length < 2) er.player = "Enter the player's full name.";
@@ -48,16 +51,43 @@ export default function Contact() {
     if (form.email && !/^\S+@\S+\.\S+$/.test(form.email)) er.email = "Enter a valid email.";
     setErrors(er);
     if (Object.keys(er).length) return;
-    setRefCode(`AFA-2026-${String(Math.floor(1000 + Math.random() * 9000))}`);
-    setDone(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setBusy(true);
+    setSubmitError("");
+    const application = {
+      player: form.player.trim(),
+      age: form.age,
+      guardian: form.guardian.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
+      program: form.program,
+      notes: form.notes.trim(),
+      status: "new",
+      created_at: new Date().toISOString(),
+    };
+
+    try {
+      if (supabase) {
+        const { error } = await supabase.from("applications").insert(application);
+        if (error) throw new Error(error.message);
+      } else {
+        const existing = JSON.parse(localStorage.getItem("ahenkan_applications") || "[]");
+        localStorage.setItem("ahenkan_applications", JSON.stringify([{ ...application, id: crypto.randomUUID() }, ...existing]));
+      }
+      setRefCode(`AFA-${new Date().getFullYear()}-${String(Math.floor(1000 + Math.random() * 9000))}`);
+      setDone(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Unable to submit your application.");
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
     <>
       <PageHead
         crumb="Contact"
-        kicker="Admissions Open · GH₵200 Registration"
+        kicker="Admissions Open · Applications Welcome"
         title="Join the Academy"
         sub="Apply for a trial, book a visit, or talk to our admissions team — we reply to every enquiry within 48 hours."
       />
@@ -98,7 +128,7 @@ export default function Contact() {
                   { Icon: PhoneIcon, label: "Call Us", value: CONTACT.phone, sub: `or ${CONTACT.altPhone}`, href: CONTACT.phoneHref },
                   { Icon: MailIcon, label: "Email Us", value: CONTACT.email, sub: "Replies within 48h", href: `mailto:${CONTACT.email}` },
                   { Icon: PinIcon, label: "Visit Us", value: CONTACT.address, sub: CONTACT.region },
-                  { Icon: ClockIcon, label: "Trial Days", value: "9am – 3pm", sub: "GH₵200 registration · Ages 15–16" },
+                  { Icon: ClockIcon, label: "Trial Days", value: "9am – 3pm", sub: "Ages 6–17 · Call to confirm" },
                 ].map((c) => (
                   <div key={c.label} className="group bg-pitch-900 p-6 transition-colors duration-300 hover:bg-pitch-850">
                     <c.Icon className="h-6 w-6 text-gold-500" />
@@ -150,7 +180,7 @@ export default function Contact() {
                       Ref · {refCode}
                     </p>
                     <p className="mt-4 text-sm text-pitch-900/60">
-                      Remember: trial registration is GH₵200 · 9am – 3pm at our Adeiso grounds.
+                      Our admissions team will contact you with trial details for the next available session.
                     </p>
                     <button
                       onClick={() => {
@@ -220,11 +250,13 @@ export default function Contact() {
 
                     <button
                       type="submit"
+                      disabled={busy}
                       className="group mt-7 flex w-full items-center justify-center gap-3 bg-pitch-700 px-7 py-4 font-cond text-lg font-bold uppercase tracking-[0.16em] text-bone-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-pitch-600 hover:shadow-[0_16px_40px_rgba(22,73,47,0.4)]"
                     >
-                      Submit Application
+                      {busy ? "Sending Application…" : "Submit Application"}
                       <ArrowIcon className="h-5 w-5 text-gold-400 transition-transform duration-300 group-hover:translate-x-1.5" />
                     </button>
+                    {submitError && <p className="mt-3 text-center text-sm font-semibold text-clay-500">{submitError}</p>}
                     <p className="mt-4 flex items-center justify-center gap-2 text-center font-cond text-sm font-semibold uppercase tracking-[0.14em] text-pitch-900/50">
                       <PinIcon className="h-4 w-4 text-gold-600" /> Ahenkan Grounds · {CONTACT.address}
                     </p>

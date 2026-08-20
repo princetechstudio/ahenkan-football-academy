@@ -169,16 +169,16 @@ function Philosophy() {
           <div className="relative">
             <div className="absolute -left-4 -top-4 h-full w-full border-2 border-gold-600/60" aria-hidden="true" />
             <div className="relative overflow-hidden">
-              <img src={IMG.drill} alt="Academy players working a passing drill with cones" className="anim-kenburns aspect-[4/3] w-full object-cover" />
+              <img src={IMG.drill} alt="Academy players working a passing drill with cones" className="aspect-[4/3] w-full bg-pitch-900 object-contain" />
             </div>
             <div className="diagonal-stripes absolute -right-5 -bottom-5 h-28 w-28" aria-hidden="true" />
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4">
             <figure className="group overflow-hidden border-2 border-pitch-900/15">
-              <img src={IMG.keeper} alt="Ahenkan goalkeeper diving to save" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={IMG.keeper} alt="Ahenkan goalkeeper diving to save" className="aspect-[4/5] w-full bg-pitch-900 object-contain" />
             </figure>
             <figure className="group mt-8 overflow-hidden border-2 border-pitch-900/15">
-              <img src={IMG.match} alt="Youth league matchday action" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={IMG.match} alt="Youth league matchday action" className="aspect-[4/5] w-full bg-pitch-900 object-contain" />
             </figure>
           </div>
         </Reveal>

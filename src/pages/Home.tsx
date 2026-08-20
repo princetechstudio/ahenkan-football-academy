@@ -17,10 +17,13 @@ import { ArrowIcon, QuoteIcon, StarIcon, WHY_ICONS } from "../components/Icons";
 function Hero() {
   const { ref, inView } = useInView<HTMLParagraphElement>(0.1);
   const decoded = useScramble("TALENT · WISDOM · KNOWLEDGE AT WORK", inView);
-  const [president, patron] = LEADERSHIP;
+  const president = LEADERSHIP[0];
+  const patron = LEADERSHIP[1] ?? LEADERSHIP[0];
+
+  if (!president || !patron) return null;
 
   return (
-    <section className="relative overflow-hidden bg-pitch-950 pt-24 lg:pt-32">
+    <section className="relative overflow-hidden bg-pitch-950 pt-24 lg:pt-28">
       <div className="pitch-lines absolute inset-0 opacity-70" aria-hidden="true" />
       <div
         className="absolute -left-40 top-10 h-[480px] w-[480px] rounded-full bg-pitch-500/20 blur-[140px]"
@@ -41,7 +44,7 @@ function Hero() {
         <path d="M100 0v200" stroke="currentColor" strokeWidth="1.5" />
       </svg>
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-4 pb-20 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pb-24">
+      <div className="relative mx-auto grid max-w-[1500px] grid-cols-1 items-center gap-8 px-4 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-2 lg:pb-20">
         {/* left copy */}
         <div className="lg:col-span-6">
           <p className="flex flex-wrap items-center gap-3 font-cond text-sm font-semibold uppercase tracking-[0.28em] text-gold-400">
@@ -59,9 +62,10 @@ function Hero() {
             <span className="mask-line text-[12vw] text-gold-500 sm:text-7xl lg:text-[80px]">
               <span style={{ animationDelay: "0.4s" }}>World-Class</span>
             </span>
-            <span className="mask-line text-[12vw] text-outline-gold sm:text-7xl lg:text-[80px]">
-              <span style={{ animationDelay: "0.52s" }}>Talent</span>
+            <span className="mask-line text-[12vw] text-gold-500 sm:text-7xl lg:text-[80px]">
+              <span style={{ animationDelay: "0.4s" }}>Talent</span>
             </span>
+           
           </h1>
 
           <p ref={ref} className="mt-5 font-cond text-lg font-semibold tracking-[0.2em] text-gold-500">
@@ -99,16 +103,21 @@ function Hero() {
 
         {/* right: the leaders */}
         <div className="relative lg:col-span-6">
+          <div className="hero-flag-stage pointer-events-none absolute right-[-7%] top-[-138px] z-20 h-[135px] w-[52%] sm:right-[-5%] sm:top-[-166px] sm:h-[175px] sm:w-[49%]" aria-hidden="true">
+            <span className="hero-flag-glow absolute inset-[12%] rounded-full" />
+            <span className="hero-flag-sweep absolute inset-y-0 left-[-20%] w-1/3" />
+            <img src={IMG.flag} alt="" className="hero-flag absolute inset-0 h-full w-full object-contain" />
+          </div>
           <div className="diagonal-stripes absolute -right-6 -top-6 h-40 w-40" aria-hidden="true" />
 
-          <div className="relative mx-auto max-w-xl">
-            {/* Royal Patron — back frame */}
-            <Reveal variant="right" delay={150}>
-              <figure className="group relative ml-auto w-[78%] overflow-hidden border-2 border-bone-50/20 bg-pitch-900">
+          <div className="relative z-10 mx-auto grid h-[470px] w-full max-w-[650px] -translate-y-10 grid-cols-2 items-end gap-3 sm:h-[560px] sm:gap-5">
+            {/* Life Patron — right frame */}
+            <Reveal variant="right" delay={150} className="col-start-2 w-full">
+              <figure className="hero-photo-back group relative overflow-hidden border-2 border-gold-500/55 bg-pitch-900 shadow-[0_24px_70px_rgba(0,0,0,0.52)] transition-all duration-500 hover:-translate-y-2 hover:border-gold-500 hover:shadow-[0_30px_80px_rgba(231,184,87,0.2)]">
                 <img
                   src={patron.img}
                   alt={patron.name}
-                  className="anim-kenburns aspect-[4/5] w-full object-cover"
+                  className="aspect-[4/5] w-full bg-pitch-900 object-contain"
                 />
                 <figcaption className="absolute inset-x-0 bottom-0 bg-pitch-950/90 px-4 py-3 backdrop-blur-sm">
                   <p className="font-display text-base uppercase leading-tight text-bone-50">{patron.name}</p>
@@ -119,13 +128,13 @@ function Hero() {
               </figure>
             </Reveal>
 
-            {/* President — front frame */}
-            <Reveal variant="left" delay={300}>
-              <figure className="group absolute -bottom-10 -left-2 w-[62%] overflow-hidden border-2 border-gold-500 bg-pitch-950 shadow-[0_30px_70px_rgba(0,0,0,0.6)] sm:-left-6">
+            {/* President — left frame */}
+            <Reveal variant="left" delay={300} className="col-start-1 row-start-1 w-full">
+              <figure className="hero-photo-front group relative overflow-hidden border-2 border-gold-500 bg-pitch-950 shadow-[0_30px_80px_rgba(0,0,0,0.65)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_34px_90px_rgba(231,184,87,0.24)]">
                 <img
                   src={president.img}
                   alt={president.name}
-                  className="anim-kenburns aspect-[4/5] w-full object-cover"
+                  className="aspect-[4/5] w-full bg-pitch-900 object-contain"
                 />
                 <figcaption className="absolute inset-x-0 bottom-0 bg-pitch-950/90 px-4 py-3 backdrop-blur-sm">
                   <p className="font-display text-base uppercase leading-tight text-bone-50">{president.name}</p>
@@ -136,13 +145,9 @@ function Hero() {
               </figure>
             </Reveal>
 
-            {/* floating flag + badge */}
-            <div className="anim-drift absolute -top-4 left-4 z-10 border border-bone-50/25 bg-pitch-950/90 px-3 py-2 shadow-lg backdrop-blur-sm">
-              <img src={IMG.flag} alt="" className="h-8 w-12 object-cover" />
-            </div>
-            <div className="absolute -bottom-14 right-2 z-10 bg-gold-500 px-4 py-3 text-pitch-950 shadow-[0_16px_40px_rgba(242,183,10,0.25)]">
-              <p className="font-display text-3xl leading-none">EST.</p>
-              <p className="font-display text-4xl leading-none">2025</p>
+            <div className="absolute -bottom-12 right-2 z-20 bg-gold-500 px-3 py-2 text-pitch-950 shadow-[0_16px_40px_rgba(242,183,10,0.25)]">
+              <p className="font-display text-2xl leading-none">EST.</p>
+              <p className="font-display text-3xl leading-none">2025</p>
             </div>
           </div>
           <div className="h-20 lg:h-24" aria-hidden="true" />
@@ -321,7 +326,7 @@ function Leadership() {
         <SectionHead
           kicker="The Men Behind the Badge"
           title="Academy Leadership"
-          sub="Vision from our President, heritage from our Royal Patron — the foundation on which every Ahenkan player stands."
+          sub="Vision from our President, heritage from our Life Patron — the foundation on which every Ahenkan player stands."
         />
         <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-2">
           {LEADERSHIP.map((l, i) => (
@@ -331,7 +336,7 @@ function Leadership() {
                   <img
                     src={l.img}
                     alt={l.name}
-                    className="aspect-[4/3] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="aspect-[4/3] w-full bg-pitch-900 object-contain"
                   />
                   <span className="absolute left-0 top-5 bg-pitch-900 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.2em] text-gold-500">
                     {l.role}
@@ -362,6 +367,8 @@ function Testimonials() {
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduced = usePrefersReducedMotion();
+
+  if (TESTIMONIALS.length === 0) return null;
 
   useEffect(() => {
     if (paused || reduced) return;
@@ -421,8 +428,21 @@ function Testimonials() {
 /* ---------------- News ---------------- */
 function News() {
   const blogs = useBlogs();
+
+  if (blogs.length === 0) {
+    return (
+      <section className="relative bg-bone-100 py-24 text-pitch-900 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 text-center">
+          <p className="text-pitch-600">No blog posts yet. Check back soon.</p>
+        </div>
+      </section>
+    );
+  }
+
   const posts = blogs.slice(0, 3);
-  const [lead, ...rest] = posts;
+  const lead = posts[0];
+  const rest = posts.slice(1);
+
   return (
     <section className="relative bg-bone-100 py-24 text-pitch-900 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -450,7 +470,7 @@ function News() {
                 <img
                   src={lead.img}
                   alt={lead.title}
-                  className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="aspect-[16/9] w-full bg-pitch-900 object-contain"
                 />
                 <span className="absolute left-0 top-5 bg-gold-500 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.18em] text-pitch-950">
                   Featured
@@ -483,7 +503,7 @@ function News() {
                     <img
                       src={n.img}
                       alt={n.title}
-                      className="h-full min-h-40 w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                      className="h-full min-h-40 w-full bg-pitch-900 object-contain"
                     />
                   </div>
                   <div className="flex flex-col p-5">

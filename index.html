@@ -20,12 +20,74 @@
       body {
         margin: 0;
         padding: 0;
-        background-color: #05130c;
+        background-color: #520e49;
       }
     </style>
+    <meta name="theme-color" content="#2a0e52" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Ahenkan Academy" />
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="https://ahenkanfootballacademy.com/logo.jpg" />
+    <link rel="icon" type="image/jpeg" href="https://ahenkanfootballacademy.com/logo.jpg" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar" content="black-translucent" />
+    
+    <!-- Open Graph for sharing -->
+    <meta property="og:title" content="Ahenkan Football Academy" />
+    <meta property="og:description" content="Premier football academy in Ghana developing world-class talent" />
+    <meta property="og:image" content="https://ahenkanfootballacademy.com/logo.jpg" />
+    <meta property="og:url" content="https://ahenkanfootballacademy.com" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ahenkan Football Academy" />
+    <meta name="twitter:description" content="Premier football academy in Ghana" />
+    <meta name="twitter:image" content="https://ahenkanfootballacademy.com/logo.jpg" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // Request notification permission
+      if ('Notification' in window && Notification.permission === 'default') {
+        setTimeout(() => {
+          Notification.requestPermission();
+        }, 2000);
+      }
+
+      // Add app to homescreen prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', e => {
+        e.preventDefault();
+        deferredPrompt = e;
+        // Show install button if desired
+        const installBtn = document.getElementById('install-app-btn');
+        if (installBtn) {
+          installBtn.style.display = 'block';
+          installBtn.addEventListener('click', () => {
+            if (deferredPrompt) {
+              deferredPrompt.prompt();
+              deferredPrompt.userChoice.then(choiceResult => {
+                if (choiceResult.outcome === 'accepted') {
+                  console.log('✓ App installed');
+                }
+                deferredPrompt = null;
+              });
+            }
+          });
+        }
+      });
+
+      // Log app installed event
+      window.addEventListener('appinstalled', () => {
+        console.log('✓ App successfully installed to home screen');
+        localStorage.setItem('appInstalled', 'true');
+      });
+    </script>
   </body>
 </html>

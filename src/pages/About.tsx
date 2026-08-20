@@ -35,7 +35,7 @@ function Story() {
                 <img
                   src={IMG.pitch}
                   alt="Aerial view of the Ahenkan training grounds"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  className="aspect-[16/10] w-full bg-pitch-900 object-contain"
                 />
                 <figcaption className="absolute bottom-0 left-0 bg-pitch-950 px-4 py-2 font-cond text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
                   Our grounds · Adeiso, Upper West Akyem
@@ -118,7 +118,7 @@ function Leaders() {
         <SectionHead
           kicker="Guided by Vision & Heritage"
           title="Academy Leadership"
-          sub="The President sets the vision; the Royal Patron grounds it in the heritage of Akyem."
+          sub="The President sets the vision; the Life Patron grounds it in the heritage of Akyem."
         />
         <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-2">
           {LEADERSHIP.map((l, i) => (
@@ -128,7 +128,7 @@ function Leaders() {
                   <img
                     src={l.img}
                     alt={l.name}
-                    className="aspect-[4/3] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="aspect-[4/3] w-full bg-pitch-900 object-contain"
                   />
                   <span className="absolute left-0 top-5 bg-pitch-900 px-4 py-1.5 font-cond text-sm font-bold uppercase tracking-[0.2em] text-gold-500">
                     {l.role}

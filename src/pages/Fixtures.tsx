@@ -36,7 +36,7 @@ function Countdown() {
                 Next Match · {next.comp}
               </p>
               <h2 className="mt-4 font-display text-4xl uppercase leading-[0.95] sm:text-5xl lg:text-6xl">
-                Ahenkan FA <span className="text-pitch-400">{next.squad}</span>
+                Ahenkan Football Academy <span className="text-pitch-400">{next.squad}</span>
                 <span className="block text-gold-500">vs {next.opp}</span>
               </h2>
               <p className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 font-cond text-base font-semibold uppercase tracking-[0.18em] text-bone-50/70">
@@ -144,7 +144,7 @@ export default function Fixtures() {
                           </span>
                         </p>
                         <h3 className="mt-1.5 font-display text-xl uppercase tracking-wide">
-                          Ahenkan FA <span className="text-gold-600">vs</span> {f.opp}
+                          Ahenkan Football Academy <span className="text-gold-600">vs</span> {f.opp}
                         </h3>
                         <p className="mt-1 flex items-center gap-2 text-sm text-pitch-900/60">
                           <PinIcon className="h-4 w-4 text-pitch-600" /> {f.venue}

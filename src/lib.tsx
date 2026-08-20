@@ -223,7 +223,7 @@ export function PageHead({
         className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-gold-500/10 blur-[100px]"
         aria-hidden="true"
       />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <p className="flex items-center gap-2 font-cond text-sm font-semibold uppercase tracking-[0.24em] text-bone-50/45">
           <Link to="/" className="transition-colors hover:text-gold-400">
             Home

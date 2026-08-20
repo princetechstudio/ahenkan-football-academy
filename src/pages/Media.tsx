@@ -103,7 +103,7 @@ export default function Media() {
                       <img
                         src={IMG.team}
                         alt="Ahenkan Football Academy team and staff"
-                        className="anim-kenburns aspect-[4/3] w-full object-cover"
+                        className="aspect-[4/3] w-full object-contain bg-pitch-900"
                       />
                       <figcaption className="absolute bottom-0 left-0 bg-pitch-950/90 px-4 py-2 font-cond text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
                         Backstage at the grounds
@@ -134,7 +134,7 @@ export default function Media() {
                     <img
                       src={img.url}
                       alt={img.title}
-                      className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                      className="w-full object-contain bg-pitch-900"
                     />
                     <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-pitch-950/90 px-4 py-3 transition-transform duration-300 group-hover:translate-y-0">
                       <p className="font-cond text-sm font-bold uppercase tracking-[0.16em] text-gold-400">
@@ -158,7 +158,7 @@ export default function Media() {
                     <img
                       src={src}
                       alt="Ahenkan academy moments"
-                      className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.07]"
+                      className="aspect-[4/5] w-full object-contain bg-pitch-900"
                     />
                     <span className="absolute bottom-2 left-2 h-2 w-2 bg-gold-500" />
                   </figure>
