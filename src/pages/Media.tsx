@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { IMG } from "../data";
 import { useMedia } from "../hooks/useContent";
 import { PageHead, Reveal, SectionHead } from "../lib";
 import { youtubeEmbed } from "../supabase";
@@ -36,15 +35,14 @@ function VideoCard({ url, title, caption }: { url: string; title: string; captio
 export default function Media() {
   const media = useMedia();
   const videos = media.filter((m) => m.kind === "video");
-  const images = media.filter((m) => m.kind === "image");
 
   return (
     <>
       <PageHead
         crumb="Media"
-        kicker="Training Videos · Matchday Photos"
+        kicker="Training Videos"
         title="Media Centre"
-        sub="Videos and photographs from the Ahenkan Grounds — uploaded by our media team, fresh from every session and matchday."
+        sub="Training sessions, drills and matchday footage from the Ahenkan Grounds — uploaded by our media team."
       />
 
       {/* videos */}
@@ -74,8 +72,8 @@ export default function Media() {
             <Reveal delay={150}>
               <div className="relative mt-14 overflow-hidden border-2 border-pitch-900/15 bg-pitch-900 text-bone-50">
                 <div className="pitch-lines absolute inset-0 opacity-40" aria-hidden="true" />
-                <div className="relative grid grid-cols-1 items-center gap-10 p-8 sm:p-12 lg:grid-cols-12">
-                  <div className="lg:col-span-7">
+                <div className="relative grid grid-cols-1 items-center gap-10 p-8 sm:p-12">
+                  <div>
                     <p className="flex items-center gap-3 font-cond text-sm font-bold uppercase tracking-[0.26em] text-gold-500">
                       <span className="pulse-dot h-2.5 w-2.5 rounded-full bg-gold-500" />
                       Media team on standby
@@ -98,18 +96,6 @@ export default function Media() {
                       <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                     </a>
                   </div>
-                  <div className="lg:col-span-5">
-                    <figure className="relative overflow-hidden border-2 border-gold-500/60">
-                      <img
-                        src={IMG.team}
-                        alt="Ahenkan Football Academy team and staff"
-                        className="aspect-[4/3] w-full object-contain bg-pitch-900"
-                      />
-                      <figcaption className="absolute bottom-0 left-0 bg-pitch-950/90 px-4 py-2 font-cond text-xs font-bold uppercase tracking-[0.2em] text-gold-500">
-                        Backstage at the grounds
-                      </figcaption>
-                    </figure>
-                  </div>
                 </div>
               </div>
             </Reveal>
@@ -117,55 +103,13 @@ export default function Media() {
         </div>
       </section>
 
-      {/* gallery */}
       <section className="relative bg-bone-50 py-24 text-pitch-900 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHead
-            kicker="From the Grounds"
-            title="Photo Gallery"
-            sub="Every week at Adeiso in pictures — uploaded by the academy media team after training and matchdays."
+            kicker="Media Access"
+            title="Academy Media"
+            sub="The media team can publish new training videos and matchday footage through the content management system."
           />
-
-          {images.length > 0 ? (
-            <div className="mt-14 columns-1 gap-5 sm:columns-2 lg:columns-3">
-              {images.map((img, i) => (
-                <Reveal key={img.id} delay={(i % 3) * 90} variant="scale" className="mb-5 break-inside-avoid">
-                  <figure className="group relative overflow-hidden border-2 border-pitch-900/15">
-                    <img
-                      src={img.url}
-                      alt={img.title}
-                      className="w-full object-contain bg-pitch-900"
-                    />
-                    <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-pitch-950/90 px-4 py-3 transition-transform duration-300 group-hover:translate-y-0">
-                      <p className="font-cond text-sm font-bold uppercase tracking-[0.16em] text-gold-400">
-                        {img.title}
-                      </p>
-                      {img.caption && <p className="mt-0.5 text-xs text-bone-50/70">{img.caption}</p>}
-                    </figcaption>
-                    <span className="absolute right-3 top-3 h-2 w-2 bg-gold-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </figure>
-                </Reveal>
-              ))}
-            </div>
-          ) : (
-            <Reveal delay={150}>
-              <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                {[IMG.drill, IMG.keeper, IMG.match, IMG.pitch, IMG.hero].map((src, i) => (
-                  <figure
-                    key={src + i}
-                    className={`group relative overflow-hidden border-2 border-pitch-900/15 ${i % 2 === 1 ? "sm:translate-y-4" : ""}`}
-                  >
-                    <img
-                      src={src}
-                      alt="Ahenkan academy moments"
-                      className="aspect-[4/5] w-full object-contain bg-pitch-900"
-                    />
-                    <span className="absolute bottom-2 left-2 h-2 w-2 bg-gold-500" />
-                  </figure>
-                ))}
-              </div>
-            </Reveal>
-          )}
 
           <Reveal delay={200}>
             <div className="mt-14 flex flex-wrap items-center justify-between gap-6 border-2 border-pitch-900/15 bg-bone-100 px-7 py-6">
