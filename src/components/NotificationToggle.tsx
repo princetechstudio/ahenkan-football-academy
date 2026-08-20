@@ -111,6 +111,7 @@ export function NotificationBell({ userEmail }: NotificationBellProps) {
     <button
       onClick={handleToggle}
       disabled={isLoading}
+      aria-pressed={isSubscribed}
       title={
         isSubscribed
           ? "Click to disable notifications"
@@ -118,8 +119,8 @@ export function NotificationBell({ userEmail }: NotificationBellProps) {
       }
       className={`relative p-2 transition-all ${
         isSubscribed
-          ? "text-gold-600 hover:text-gold-700"
-          : "text-pitch-700/50 hover:text-pitch-700"
+          ? "grid h-10 w-10 place-items-center border border-bone-50 bg-bone-50 text-pitch-950 shadow-[0_0_0_3px_rgba(255,255,255,0.2)] hover:bg-gold-300"
+          : "grid h-10 w-10 place-items-center border border-bone-50/25 text-bone-50/60 hover:border-bone-50 hover:text-bone-50"
       } disabled:opacity-50`}
       aria-label={
         isSubscribed
