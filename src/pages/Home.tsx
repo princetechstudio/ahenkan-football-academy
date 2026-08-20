@@ -185,7 +185,7 @@ function Stat({ value, suffix, label, start }: { value: number; suffix: string; 
 function Ticker() {
   const items = [...TICKER, ...TICKER];
   return (
-    <div className="relative z-10 bg-gold-500 py-3 text-pitch-950">
+    <div className="relative z-10 overflow-hidden bg-gold-500 py-3 text-pitch-950">
       <div className="marquee-track">
         {[0, 1].map((half) => (
           <div key={half} className="flex shrink-0 items-center" aria-hidden={half === 1}>

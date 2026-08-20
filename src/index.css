@@ -339,6 +339,16 @@ body {
   transform: scaleX(1);
 }
 
+@media (max-width: 640px) {
+  .reveal-left {
+    transform: translateX(-10px);
+  }
+
+  .reveal-right {
+    transform: translateX(10px);
+  }
+}
+
 /* ---------- component shortcuts ---------- */
 @layer components {
   .btn-gold {
