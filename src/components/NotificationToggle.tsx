@@ -27,6 +27,10 @@ export function NotificationBell({ userEmail }: NotificationBellProps) {
   }, []);
 
   const handleToggle = async () => {
+    if (!isSubscribed && !window.confirm("Activate notifications for AFA?")) {
+      return;
+    }
+
     setIsLoading(true);
     try {
       if (isSubscribed) {
