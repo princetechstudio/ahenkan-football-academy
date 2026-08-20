@@ -9,7 +9,6 @@ const CACHE_NAMES = {
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/manifest.json',
   '/favicon.ico'
 ];
 
@@ -159,8 +158,8 @@ self.addEventListener('sync', event => {
 self.addEventListener('push', event => {
   const options = {
     body: event.data ? event.data.text() : 'New notification from Ahenkan Academy',
-    icon: 'https://ahenkanfootballacademy.com/logo.jpg',
-    badge: 'https://ahenkanfootballacademy.com/logo.jpg',
+    icon: new URL('images/logo.png', self.registration.scope).href,
+    badge: new URL('images/logo.png', self.registration.scope).href,
     tag: 'ahenkan-notification',
     requireInteraction: false,
     actions: [

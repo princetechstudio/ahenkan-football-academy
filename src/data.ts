@@ -1,4 +1,5 @@
 import flagUrl from "../images/flag.png";
+import logoUrl from "../images/logo.png";
 import odiUrl from "../images/odi.png";
 import okyeheneUrl from "../images/okyehene.png";
 
@@ -6,7 +7,7 @@ const SITE = "https://ahenkanfootballacademy.com";
 const GEN = "https://image.qwenlm.ai/generated-images";
 
 export const IMG = {
-  logo: `${SITE}/logo.jpg`,
+  logo: logoUrl,
   flag: flagUrl,
   team: `${SITE}/team_staff.jpg`,
   president: odiUrl,
