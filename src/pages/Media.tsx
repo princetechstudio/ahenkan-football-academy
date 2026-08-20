@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { useMedia } from "../hooks/useContent";
 import { PageHead, Reveal, SectionHead } from "../lib";
 import { youtubeEmbed } from "../supabase";
-import { ArrowIcon, BallIcon, StarIcon } from "../components/Icons";
+import { ArrowIcon } from "../components/Icons";
 
 function VideoCard({ url, title, caption }: { url: string; title: string; caption: string }) {
   const embed = youtubeEmbed(url);
@@ -103,39 +102,6 @@ export default function Media() {
         </div>
       </section>
 
-      <section className="relative bg-bone-50 py-24 text-pitch-900 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHead
-            kicker="Media Access"
-            title="Academy Media"
-            sub="The media team can publish new training videos and matchday footage through the content management system."
-          />
-
-          <Reveal delay={200}>
-            <div className="mt-14 flex flex-wrap items-center justify-between gap-6 border-2 border-pitch-900/15 bg-bone-100 px-7 py-6">
-              <p className="flex items-center gap-4 font-display text-2xl uppercase sm:text-3xl">
-                <BallIcon className="h-8 w-8 text-gold-600" />
-                Are you the media admin? <span className="text-pitch-600">Upload from your computer.</span>
-              </p>
-              <Link
-                to="/admin"
-                className="group inline-flex items-center gap-3 bg-pitch-700 px-7 py-3.5 font-cond text-base font-bold uppercase tracking-[0.14em] text-bone-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-pitch-600"
-              >
-                Open the CMS
-                <ArrowIcon className="h-5 w-5 text-gold-400 transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Link>
-            </div>
-          </Reveal>
-
-          <Reveal delay={240}>
-            <p className="mt-8 flex flex-wrap items-center justify-center gap-3 text-center font-cond text-sm font-semibold uppercase tracking-[0.2em] text-pitch-900/45">
-              <StarIcon className="h-4 w-4 text-gold-600" />
-              Talent · Wisdom · Knowledge at Work
-              <StarIcon className="h-4 w-4 text-gold-600" />
-            </p>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }
