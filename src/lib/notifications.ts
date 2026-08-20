@@ -55,6 +55,14 @@ export function isPushNotificationSupported(): boolean {
   );
 }
 
+export function isPushNotificationConfigured(): boolean {
+  return Boolean(
+    isPushNotificationSupported() &&
+    import.meta.env.VITE_SUPABASE_URL &&
+    import.meta.env.VITE_VAPID_PUBLIC_KEY
+  );
+}
+
 /**
  * Send push notification to all subscribed users (admin function)
  */

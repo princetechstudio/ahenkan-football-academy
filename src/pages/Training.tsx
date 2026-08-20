@@ -173,11 +173,8 @@ function Philosophy() {
             </div>
             <div className="diagonal-stripes absolute -right-5 -bottom-5 h-28 w-28" aria-hidden="true" />
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-4">
+          <div className="mt-10">
             <figure className="group overflow-hidden border-2 border-pitch-900/15">
-              <img src={IMG.keeper} alt="Ahenkan goalkeeper diving to save" className="aspect-[4/5] w-full bg-pitch-900 object-contain" />
-            </figure>
-            <figure className="group mt-8 overflow-hidden border-2 border-pitch-900/15">
               <img src={IMG.match} alt="Youth league matchday action" className="aspect-[4/5] w-full bg-pitch-900 object-contain" />
             </figure>
           </div>
