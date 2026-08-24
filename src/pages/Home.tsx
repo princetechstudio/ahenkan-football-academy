@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { IMG, LEADERSHIP, PROGRAMS, STATS, TESTIMONIALS, TICKER, WHY } from "../data";
+import { IMG, LEADERSHIP, PROGRAMS, SPONSORS, STATS, TESTIMONIALS, TICKER, WHY } from "../data";
 import { useBlogs } from "../hooks/useContent";
 import {
   Kicker,
@@ -318,6 +318,41 @@ function Programs() {
   );
 }
 
+/* ---------------- Sponsors ---------------- */
+function Sponsors() {
+  return (
+    <section className="relative overflow-hidden bg-bone-50 py-20 text-pitch-900 lg:py-24">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gold-500" aria-hidden="true" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="flex flex-wrap items-end justify-between gap-6 border-b-2 border-pitch-900/10 pb-8">
+          <SectionHead
+            kicker="Community Support"
+            title="Our Proud Sponsors"
+            sub="The businesses and community partners helping Ahenkan create more opportunities for young players."
+          />
+          <p className="max-w-xs font-cond text-sm font-bold uppercase tracking-[0.18em] text-pitch-900/45">
+            Together, we build the next generation.
+          </p>
+        </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
+          {SPONSORS.map((sponsor, i) => (
+            <Reveal key={sponsor.name} delay={i * 70}>
+              <figure className="group flex min-h-40 items-center justify-center border-2 border-pitch-900/10 bg-white p-4 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-600 hover:shadow-[0_18px_36px_rgba(29,18,48,0.12)] sm:min-h-44 sm:p-5">
+                <img
+                  src={sponsor.image}
+                  alt={`${sponsor.name} logo`}
+                  className="max-h-28 w-full object-contain mix-blend-multiply transition duration-300 group-hover:scale-105 sm:max-h-32"
+                />
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Leadership ---------------- */
 function Leadership() {
   return (
@@ -604,6 +639,7 @@ export default function Home() {
       <Ticker />
       <WhyChoose />
       <Programs />
+      <Sponsors />
       <Leadership />
       <Testimonials />
       <News />

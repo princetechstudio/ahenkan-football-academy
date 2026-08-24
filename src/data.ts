@@ -2,6 +2,12 @@ import flagUrl from "../images/flag.png";
 import logoUrl from "../images/logo.png";
 import odiUrl from "../images/odi.png";
 import okyeheneUrl from "../images/okyehene.png";
+import afrAkomahUrl from "../images/1003303206.jpg";
+import readyOilUrl from "../images/1003303207.jpg";
+import kofataUrl from "../images/1003303208.jpg";
+import asensoFurnitureUrl from "../images/1003303209.jpg";
+import frimpsUrl from "../images/1003303212.jpg";
+import lordMotorsUrl from "../images/1003303213.jpg";
 
 const SITE = "https://ahenkanfootballacademy.com";
 const GEN = "https://image.qwenlm.ai/generated-images";
@@ -23,6 +29,15 @@ export const IMG = {
   pitch: `${GEN}/cde1429c-b66f-417d-b5ef-e839601d01ba/_result.png`,
   match: `${GEN}/7c88997c-cf4b-4b24-bc9b-b3a7f2bfb2ae/_result.png`,
 };
+
+export const SPONSORS = [
+  { name: "Afrakomah Community Clinic", image: afrAkomahUrl },
+  { name: "Ready Oil Limited", image: readyOilUrl },
+  { name: "Kofata Motors", image: kofataUrl },
+  { name: "K. Asenso Furniture", image: asensoFurnitureUrl },
+  { name: "Frimps Energy", image: frimpsUrl },
+  { name: "Lord Motors", image: lordMotorsUrl },
+];
 
 export const CONTACT = {
   phone: "+233 24 471 2689",
