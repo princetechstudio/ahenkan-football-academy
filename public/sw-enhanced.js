@@ -64,6 +64,20 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Always refresh the HTML shell so new deployments become visible promptly.
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAMES.runtime).then(cache => cache.put(request, clone));
+          return response;
+        })
+        .catch(() => caches.match(request).then(response => response || caches.match('/index.html')))
+    );
+    return;
+  }
+
   // Cache-first strategy for static assets
   event.respondWith(
     caches.match(request)
