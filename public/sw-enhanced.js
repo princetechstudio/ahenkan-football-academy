@@ -172,8 +172,8 @@ self.addEventListener('sync', event => {
 self.addEventListener('push', event => {
   const options = {
     body: event.data ? event.data.text() : 'New notification from Ahenkan Academy',
-    icon: new URL('images/logo.png', self.registration.scope).href,
-    badge: new URL('images/logo.png', self.registration.scope).href,
+    icon: new URL('assets/logo-C0TV36-f.png', self.registration.scope).href,
+    badge: new URL('assets/logo-C0TV36-f.png', self.registration.scope).href,
     tag: 'ahenkan-notification',
     requireInteraction: false,
     actions: [

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   getStoredUserEmail,
+  isPushNotificationSupported,
   isPushNotificationConfigured,
   requestNotificationPermission,
   storeUserEmail,
@@ -21,7 +22,7 @@ export function NotificationBell({ userEmail }: NotificationBellProps) {
   const [permission, setPermission] = useState<NotificationPermission>("default");
 
   useEffect(() => {
-    setIsSupported(isPushNotificationConfigured());
+    setIsSupported(isPushNotificationSupported());
     setIsSubscribed(isUserSubscribed());
     setPermission(Notification.permission);
   }, []);
@@ -33,6 +34,11 @@ export function NotificationBell({ userEmail }: NotificationBellProps) {
 
     setIsLoading(true);
     try {
+      if (!isPushNotificationConfigured()) {
+        window.alert("Notifications are not configured on this deployment yet.");
+        return;
+      }
+
       if (isSubscribed) {
         // Unsubscribe
         const success = await unsubscribeFromPushNotifications();
