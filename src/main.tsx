@@ -7,7 +7,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
 
 // Register the service worker for web push notifications.
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw-enhanced.js`, { updateViaCache: 'none' }).catch(error => {
+  navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw-enhanced.js?v=4`, { updateViaCache: 'none' }).catch(error => {
     console.log('Service Worker registration failed:', error);
   });
 }
