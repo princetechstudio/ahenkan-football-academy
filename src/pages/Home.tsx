@@ -639,11 +639,11 @@ export default function Home() {
       <Ticker />
       <WhyChoose />
       <Programs />
-      <Sponsors />
       <Leadership />
       <Testimonials />
       <News />
       <CtaBand />
+      <Sponsors />
     </>
   );
 }
