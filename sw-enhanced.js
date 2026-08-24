@@ -1,5 +1,5 @@
 // Service Worker for Ahenkan Football Academy PWA
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE_NAMES = {
   static: `ahenkan-static-${CACHE_VERSION}`,
   runtime: `ahenkan-runtime-${CACHE_VERSION}`,
