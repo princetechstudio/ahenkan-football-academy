@@ -11,19 +11,19 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/assets/logo-C0TV36-f.png",
+      "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "/assets/logo-C0TV36-f.png",
+      "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "/assets/logo-C0TV36-f.png",
+      "src": "/icon-512x512.png",
       "sizes": "256x256",
       "type": "image/jpeg",
       "purpose": "maskable"
@@ -31,13 +31,13 @@
   ],
   "screenshots": [
     {
-      "src": "https://ahenkanfootballacademy.com/logo.jpg",
+      "src": "/icon-512x512.png",
       "sizes": "540x720",
       "type": "image/jpeg",
       "form_factor": "narrow"
     },
     {
-      "src": "https://ahenkanfootballacademy.com/logo.jpg",
+      "src": "/icon-512x512.png",
       "sizes": "1280x720",
       "type": "image/jpeg",
       "form_factor": "wide"
