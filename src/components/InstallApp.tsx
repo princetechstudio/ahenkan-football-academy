@@ -6,26 +6,33 @@ type InstallPromptEvent = Event & {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 };
 
+let deferredInstallPrompt: InstallPromptEvent | null = null;
+
+if (typeof window !== "undefined") {
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event as InstallPromptEvent;
+    window.dispatchEvent(new Event("afa-install-ready"));
+  });
+}
+
 export default function InstallApp() {
-  const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
+  const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(deferredInstallPrompt);
   const [installed, setInstalled] = useState(false);
 
   useEffect(() => {
     setInstalled(window.matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone));
 
-    const handleBeforeInstallPrompt = (event: Event) => {
-      event.preventDefault();
-      setInstallPrompt(event as InstallPromptEvent);
-    };
     const handleAppInstalled = () => {
       setInstalled(true);
       setInstallPrompt(null);
     };
+    const handleInstallReady = () => setInstallPrompt(deferredInstallPrompt);
 
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("afa-install-ready", handleInstallReady);
     window.addEventListener("appinstalled", handleAppInstalled);
     return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener("afa-install-ready", handleInstallReady);
       window.removeEventListener("appinstalled", handleAppInstalled);
     };
   }, []);
@@ -40,6 +47,7 @@ export default function InstallApp() {
     await installPrompt.prompt();
     const choice = await installPrompt.userChoice;
     if (choice.outcome === "accepted") setInstalled(true);
+    deferredInstallPrompt = null;
     setInstallPrompt(null);
   }
 
