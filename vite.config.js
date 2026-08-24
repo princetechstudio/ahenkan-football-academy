@@ -3,7 +3,9 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  base: process.env.BASE_PATH || (process.env.NODE_ENV === "production" ? "/ahenkan-football-academy/" : "/"),
+  base:
+    process.env.BASE_PATH ||
+    (process.env.VERCEL ? "/" : process.env.NODE_ENV === "production" ? "/ahenkan-football-academy/" : "/"),
   plugins: [react(), tailwindcss()],
   server: {
     host: "localhost",
