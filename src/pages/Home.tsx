@@ -637,13 +637,13 @@ export default function Home() {
     <>
       <Hero />
       <Ticker />
-      <Sponsors />
       <WhyChoose />
       <Programs />
       <Leadership />
       <Testimonials />
       <News />
       <CtaBand />
+      <Sponsors />
     </>
   );
 }
