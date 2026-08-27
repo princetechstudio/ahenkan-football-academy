@@ -9,7 +9,6 @@ import {
 } from "../supabase";
 import { PageHead, Reveal } from "../lib";
 import { RichTextEditor } from "../components/RichTextEditor";
-import { sendWebsiteNotification } from "../lib/notifications";
 import {
   ArrowIcon,
   CheckIcon,
@@ -178,18 +177,6 @@ function BlogsPanel() {
         const { error } = await supabase!.from("blogs").insert(payload);
         if (error) throw new Error(`Insert failed: ${error.message}`);
         setMsg("Article published to the website.");
-        
-        // Send push notification to all subscribers
-        await sendWebsiteNotification({
-          title: payload.title,
-          body: payload.excerpt || "New article published!",
-          icon: payload.img || "/icon-192x192.png",
-          type: "blog",
-          url: "/#/blogs",
-        }).catch((err) => {
-          console.warn("Failed to send notification:", err);
-          // Don't fail the publish if notification fails
-        });
       }
       await load();
       setOpen(false);
@@ -424,12 +411,6 @@ function FixturesPanel() {
     try {
       await supabase!.from("fixtures").insert({ ...form, date: new Date(form.date).toISOString() });
       setMsg("Fixture added to the website.");
-      await sendWebsiteNotification({
-        title: "New fixture announced",
-        body: `${form.squad} vs ${form.opp}${form.comp ? ` · ${form.comp}` : ""}`,
-        type: "fixture",
-        url: "/#/fixtures",
-      }).catch((err) => console.warn("Failed to send fixture notification:", err));
       await load();
       setForm(EMPTY_FIX);
       setOpen(false);
@@ -529,12 +510,6 @@ function ResultsPanel() {
     try {
       await supabase!.from("results").insert({ ...form, date: new Date(form.date).toISOString() });
       setMsg("Result posted.");
-      await sendWebsiteNotification({
-        title: "Match result published",
-        body: `${form.squad} ${form.score} ${form.opp}${form.comp ? ` · ${form.comp}` : ""}`,
-        type: "result",
-        url: "/#/fixtures",
-      }).catch((err) => console.warn("Failed to send result notification:", err));
       await load();
       setForm(EMPTY_RES);
       setOpen(false);
@@ -654,12 +629,6 @@ function MediaPanel({ kind }: { kind: "image" | "video" }) {
       }
       await supabase!.from("media").insert({ kind, title: title || "Untitled", caption, url });
       setMsg(kind === "image" ? "Photo uploaded to the gallery." : "Video published to the website.");
-      await sendWebsiteNotification({
-        title: kind === "image" ? "New photo gallery update" : "New video published",
-        body: (title || "Untitled") + (caption ? ` — ${caption}` : ""),
-        type: kind === "image" ? "media" : "video",
-        url: "/#/media",
-      }).catch((err) => console.warn("Failed to send media notification:", err));
       await load();
       setTitle("");
       setCaption("");

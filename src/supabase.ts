@@ -2,9 +2,10 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL =
   import.meta.env.VITE_SUPABASE_URL ?? "https://fhukpyegqthatoixvqgl.supabase.co";
-const SUPABASE_ANON_KEY: string | undefined = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_ANON_KEY: string | undefined =
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-/** True when the anon key is provided via .env (VITE_SUPABASE_ANON_KEY). */
+/** True when a Supabase browser key is provided via .env. */
 export const isSupabaseConfigured = Boolean(SUPABASE_ANON_KEY);
 
 /** Null when unconfigured — the site then falls back to the built-in content. */

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { CONTACT, IMG, NAV } from "../data";
 import { CloseIcon, FacebookIcon, MailIcon, MenuIcon, PhoneIcon, PinIcon } from "./Icons";
-import InstallApp from "./InstallApp";
-import { NotificationBell } from "./NotificationToggle";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -98,8 +96,6 @@ export default function Header() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <NotificationBell />
-            <InstallApp />
             <Link
               to="/contact"
               className="hidden items-center gap-2 bg-gold-500 px-3.5 py-2 font-cond text-sm font-bold uppercase tracking-[0.08em] text-pitch-950 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-[0_10px_30px_rgba(242,183,10,0.3)] sm:inline-flex"
