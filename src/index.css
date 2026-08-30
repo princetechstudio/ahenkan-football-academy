@@ -245,6 +245,22 @@ body {
   filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.38));
 }
 
+@media (max-width: 640px) {
+  .hero-flag-stage {
+    top: -1.75rem;
+    right: -1%;
+    z-index: 0;
+    width: 38%;
+    height: 110px;
+    opacity: 0.92;
+  }
+
+  .hero-flag {
+    transform: scale(0.8) translateY(10px);
+    transform-origin: 22% 80%;
+  }
+}
+
 .hero-flag {
   animation: flagWave 6.5s ease-in-out infinite;
   filter: saturate(1.18) drop-shadow(0 0 22px rgba(231, 184, 87, 0.34));
