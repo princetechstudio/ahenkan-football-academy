@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import {
+  broadcastNotification,
   isSupabaseConfigured,
   removeFromStorage,
   supabase,
@@ -213,6 +214,12 @@ function BlogsPanel() {
       } else {
         const { error } = await supabase!.from("blogs").insert(payload);
         if (error) throw new Error(`Insert failed: ${error.message}`);
+        await broadcastNotification({
+          title: "New academy update",
+          body: `${form.title || "A new article"} has been published.`,
+          type: "blog",
+          url: "/blogs",
+        });
         setMsg("Article published to the website.");
       }
       await load();
@@ -448,6 +455,12 @@ function FixturesPanel() {
     setBusy(true);
     try {
       await supabase!.from("fixtures").insert({ ...form, date: new Date(form.date).toISOString() });
+      await broadcastNotification({
+        title: "New fixture announced",
+        body: `${form.opp ? `Ahenkan ${form.squad || "team"} vs ${form.opp}` : "A new academy fixture"} is now on the fixture list.`,
+        type: "result",
+        url: "/fixtures",
+      });
       setMsg("Fixture added to the website.");
       await load();
       setForm(EMPTY_FIX);
@@ -548,6 +561,12 @@ function ResultsPanel() {
     setBusy(true);
     try {
       await supabase!.from("results").insert({ ...form, date: new Date(form.date).toISOString() });
+      await broadcastNotification({
+        title: "Match result posted",
+        body: `${form.squad || "Ahenkan team"} ${form.score || "played"} ${form.opp || "a match"}.`,
+        type: "result",
+        url: "/fixtures",
+      });
       setMsg("Result posted.");
       await load();
       setForm(EMPTY_RES);

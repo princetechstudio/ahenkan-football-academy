@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { CalendarDays, Pencil, Plus, Save, Trash2, Trophy, X } from "lucide-react";
-import { supabase } from "../supabase";
+import { broadcastNotification, supabase } from "../supabase";
 
 type FixtureRow = {
   id?: string;
@@ -100,6 +100,14 @@ export default function CmsMatchManager({ kind }: { kind: "fixtures" | "results"
         setNotice(`${isResult ? "Result" : "Fixture"} updated.`);
       } else {
         await supabase!.from(table).insert(payload);
+        await broadcastNotification({
+          title: isResult ? "Match result posted" : "New fixture announced",
+          body: isResult
+            ? `${(payload as ResultRow).squad || "Ahenkan team"} ${((payload as ResultRow).score || "played")} ${(payload as ResultRow).opp || "a match"}.`
+            : `${(payload as FixtureRow).squad || "Ahenkan team"} vs ${(payload as FixtureRow).opp || "a new opponent"} is now on the fixture list.`,
+          type: isResult ? "result" : "result",
+          url: "/fixtures",
+        });
         setNotice(`${isResult ? "Result" : "Fixture"} added.`);
       }
       setOpen(false);

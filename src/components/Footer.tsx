@@ -1,20 +1,34 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { CONTACT, IMG, NAV, SITE_LINKS } from "../data";
+import { requestPushNotifications } from "../supabase";
 import { FacebookIcon, MailIcon, PhoneIcon, PinIcon } from "./Icons";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "error" | "done">("idle");
+  const [state, setState] = useState<"idle" | "error" | "done" | "working">("idle");
+  const [message, setMessage] = useState("");
 
-  const subscribe = (e: FormEvent) => {
+  const subscribe = async (e: FormEvent) => {
     e.preventDefault();
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setState("error");
+      setMessage("Please enter a valid email.");
       return;
     }
-    setState("done");
-    setEmail("");
+
+    setState("working");
+    setMessage("Enabling notifications…");
+
+    try {
+      const result = await requestPushNotifications(email);
+      setState(result.ok ? "done" : "error");
+      setMessage(result.message);
+      if (result.ok) setEmail("");
+    } catch (error) {
+      setState("error");
+      setMessage(error instanceof Error ? error.message : "Could not enable notifications.");
+    }
   };
 
   return (
@@ -136,7 +150,7 @@ export default function Footer() {
 
             {state === "done" ? (
               <p className="mt-5 border-2 border-gold-500/60 bg-pitch-900 px-4 py-3 font-cond text-sm font-bold uppercase tracking-[0.16em] text-gold-400">
-                ✓ You're on the list. See you at the grounds.
+                ✓ {message || "You're on the list. See you at the grounds."}
               </p>
             ) : (
               <form onSubmit={subscribe} className="mt-5" noValidate>
@@ -151,6 +165,7 @@ export default function Footer() {
                     onChange={(e) => {
                       setEmail(e.target.value);
                       setState("idle");
+                      setMessage("");
                     }}
                     placeholder="you@example.com"
                     className={`min-w-0 flex-1 border-2 bg-pitch-900 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-50/35 outline-none transition-colors focus:border-gold-500 ${
@@ -159,13 +174,16 @@ export default function Footer() {
                   />
                   <button
                     type="submit"
-                    className="shrink-0 bg-gold-500 px-5 font-cond text-sm font-bold uppercase tracking-[0.14em] text-pitch-950 transition-colors hover:bg-gold-400"
+                    disabled={state === "working"}
+                    className="shrink-0 bg-gold-500 px-5 font-cond text-sm font-bold uppercase tracking-[0.14em] text-pitch-950 transition-colors hover:bg-gold-400 disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    Join
+                    {state === "working" ? "Wait…" : "Join"}
                   </button>
                 </div>
-                {state === "error" && (
-                  <p className="mt-2 text-sm font-semibold text-clay-400">Please enter a valid email.</p>
+                {message && (
+                  <p className={`mt-2 text-sm font-semibold ${state === "error" ? "text-clay-400" : "text-gold-400"}`}>
+                    {message}
+                  </p>
                 )}
               </form>
             )}
