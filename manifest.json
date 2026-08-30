@@ -2,8 +2,8 @@
   "name": "Ahenkan Football Academy — Developing Ghana's Future Stars",
   "short_name": "Ahenkan Academy",
   "description": "Premier football academy in Ghana developing world-class talent through elite coaching and professional training facilities. Training, Fixtures, Results & Media.",
-  "start_url": "/?source=pwa",
-  "scope": "/",
+  "start_url": "./?source=pwa",
+  "scope": "./",
   "display": "standalone",
   "theme_color": "#2a0e52",
   "background_color": "#2a0e52",
@@ -31,15 +31,15 @@
   ],
   "screenshots": [
     {
-      "src": "https://ahenkanfootballacademy.com/logo.jpg",
+      "src": "./icon-512x512.png",
       "sizes": "540x720",
-      "type": "image/jpeg",
+      "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "https://ahenkanfootballacademy.com/logo.jpg",
+      "src": "./icon-512x512.png",
       "sizes": "1280x720",
-      "type": "image/jpeg",
+      "type": "image/png",
       "form_factor": "wide"
     }
   ],
@@ -49,10 +49,10 @@
       "name": "Training Programs",
       "short_name": "Training",
       "description": "View our elite training programs",
-      "url": "/?source=pwa&page=training",
+      "url": "./?source=pwa&page=training",
       "icons": [
         {
-          "src": "https://ahenkanfootballacademy.com/logo.jpg",
+          "src": "./icon-192x192.png",
           "sizes": "192x192"
         }
       ]
@@ -61,10 +61,10 @@
       "name": "Fixtures",
       "short_name": "Fixtures",
       "description": "View upcoming matches and fixtures",
-      "url": "/?source=pwa&page=fixtures",
+      "url": "./?source=pwa&page=fixtures",
       "icons": [
         {
-          "src": "https://ahenkanfootballacademy.com/logo.jpg",
+          "src": "./icon-192x192.png",
           "sizes": "192x192"
         }
       ]
@@ -73,10 +73,10 @@
       "name": "Results",
       "short_name": "Results",
       "description": "View match results and statistics",
-      "url": "/?source=pwa&page=results",
+      "url": "./?source=pwa&page=results",
       "icons": [
         {
-          "src": "https://ahenkanfootballacademy.com/logo.jpg",
+          "src": "./icon-192x192.png",
           "sizes": "192x192"
         }
       ]
@@ -85,10 +85,10 @@
       "name": "Media",
       "short_name": "Media",
       "description": "View photos and videos",
-      "url": "/?source=pwa&page=media",
+      "url": "./?source=pwa&page=media",
       "icons": [
         {
-          "src": "https://ahenkanfootballacademy.com/logo.jpg",
+          "src": "./icon-192x192.png",
           "sizes": "192x192"
         }
       ]
