@@ -16,8 +16,10 @@ type ResultRow = FixtureRow & {
   res: "W" | "D" | "L";
 };
 
+const MATCH_SQUADS = ["U-13", "U-15", "U-17", "Senior"] as const;
+
 const emptyFixture: FixtureRow = {
-  squad: "U-17",
+  squad: "U-13",
   comp: "UWA Regional Youth League",
   opp: "",
   venue: "Ahenkan Grounds, Adeiso",
@@ -116,7 +118,7 @@ export default function CmsMatchManager({ kind }: { kind: "fixtures" | "results"
     await load();
   }
 
-  function update<K extends keyof (FixtureRow | ResultRow)>(key: K, value: (FixtureRow | ResultRow)[K]) {
+  function update(key: string, value: string) {
     setForm((current) => ({ ...current, [key]: value } as FixtureRow | ResultRow));
   }
 
@@ -148,7 +150,9 @@ export default function CmsMatchManager({ kind }: { kind: "fixtures" | "results"
             <label className="cms-label">
               Squad
               <select className="cms-input mt-1" value={form.squad} onChange={(event) => update("squad", event.target.value)}>
-                <option>U-8</option><option>U-12</option><option>U-15</option><option>U-17</option>
+                {MATCH_SQUADS.map((squad) => (
+                  <option key={squad} value={squad}>{squad}</option>
+                ))}
               </select>
             </label>
             <label className="cms-label">

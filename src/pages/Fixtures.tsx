@@ -4,7 +4,8 @@ import { useFixtures, useResults } from "../hooks/useContent";
 import { PageHead, Reveal, fmtDate, fmtTime, useCountdown } from "../lib";
 import { PinIcon, StarIcon } from "../components/Icons";
 
-type Filter = "All" | "U-15" | "U-17";
+const SQUAD_FILTERS = ["All", "U-13", "U-15", "U-17", "Senior"] as const;
+type Filter = (typeof SQUAD_FILTERS)[number];
 
 const RES_STYLE: Record<"W" | "D" | "L", string> = {
   W: "bg-gold-500 text-pitch-950",
@@ -91,7 +92,7 @@ export default function Fixtures() {
         crumb="Fixtures"
         kicker="UWA Regional Youth League · Eastern Regional Cup"
         title="Fixtures & Results"
-        sub="Every match our U-15 and U-17 squads play — upcoming fixtures, recent results and where Ahenkan sits in the table."
+        sub="Every match our U-13, U-15, U-17 and Senior squads play — upcoming fixtures, recent results and where Ahenkan sits in the table."
       />
       <Countdown />
 
@@ -100,7 +101,7 @@ export default function Fixtures() {
           <Reveal>
             <div className="flex flex-wrap items-center gap-3">
               <p className="mr-3 font-cond text-sm font-bold uppercase tracking-[0.24em] text-pitch-900/50">Filter squads</p>
-              {(["All", "U-15", "U-17"] as Filter[]).map((f) => (
+              {SQUAD_FILTERS.map((f) => (
                 <button
                   key={f}
                   onClick={() => setFilter(f)}

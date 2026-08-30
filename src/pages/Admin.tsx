@@ -34,6 +34,43 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
+function PasswordField({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+}) {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <Field label={label}>
+      <div className="relative">
+        <input
+          required
+          type={visible ? "text" : "password"}
+          className={`${inputCls} pr-20`}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+        />
+        <button
+          type="button"
+          onClick={() => setVisible((current) => !current)}
+          className="absolute inset-y-0 right-0 px-3 font-cond text-xs font-bold uppercase tracking-[0.1em] text-pitch-700 hover:text-pitch-950"
+          aria-label={visible ? `Hide ${label.toLowerCase()}` : `Show ${label.toLowerCase()}`}
+        >
+          {visible ? "Hide" : "Show"}
+        </button>
+      </div>
+    </Field>
+  );
+}
+
 function FilePicker({
   accept,
   file,
@@ -388,7 +425,8 @@ function BlogsPanel() {
 
 /* ---------------- Fixtures & Results ---------------- */
 type FixRow = { id?: string; squad: string; comp: string; opp: string; venue: string; date: string };
-const EMPTY_FIX: FixRow = { squad: "", comp: "", opp: "", venue: "", date: "" };
+const FIXTURE_SQUADS = ["U-13", "U-15", "U-17", "Senior"] as const;
+const EMPTY_FIX: FixRow = { squad: "U-13", comp: "", opp: "", venue: "", date: "" };
 
 function FixturesPanel() {
   const [rows, setRows] = useState<FixRow[]>([]);
@@ -444,8 +482,9 @@ function FixturesPanel() {
         <form onSubmit={save} className="mt-6 grid grid-cols-1 gap-4 border-2 border-gold-500/60 bg-bone-100 p-6 sm:grid-cols-2">
           <Field label="Squad *">
             <select className={inputCls} value={form.squad} onChange={(e) => setForm({ ...form, squad: e.target.value })}>
-              <option>U-15</option>
-              <option>U-17</option>
+              {FIXTURE_SQUADS.map((squad) => (
+                <option key={squad} value={squad}>{squad}</option>
+              ))}
             </select>
           </Field>
           <Field label="Competition">
@@ -487,7 +526,7 @@ function FixturesPanel() {
 }
 
 type ResRow = { id?: string; squad: string; comp: string; opp: string; venue: string; score: string; res: "W" | "D" | "L"; date: string };
-const EMPTY_RES: ResRow = { squad: "", comp: "", opp: "", venue: "", score: "", res: "W", date: "" };
+const EMPTY_RES: ResRow = { squad: "U-13", comp: "", opp: "", venue: "", score: "", res: "W", date: "" };
 
 function ResultsPanel() {
   const [rows, setRows] = useState<ResRow[]>([]);
@@ -543,8 +582,9 @@ function ResultsPanel() {
         <form onSubmit={save} className="mt-6 grid grid-cols-1 gap-4 border-2 border-gold-500/60 bg-bone-100 p-6 sm:grid-cols-3">
           <Field label="Squad *">
             <select className={inputCls} value={form.squad} onChange={(e) => setForm({ ...form, squad: e.target.value })}>
-              <option>U-15</option>
-              <option>U-17</option>
+              {FIXTURE_SQUADS.map((squad) => (
+                <option key={squad} value={squad}>{squad}</option>
+              ))}
             </select>
           </Field>
           <Field label="Opponent *">
@@ -1122,38 +1162,26 @@ function SettingsPanel() {
         <div>
           <h3 className="mb-4 font-cond text-lg font-semibold uppercase tracking-[0.16em] text-pitch-900">Change Password</h3>
           <form onSubmit={handlePasswordChange} className="space-y-4">
-            <Field label="Current Password">
-              <input
-                required
-                type="password"
-                className={inputCls}
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-                placeholder="••••••••"
-              />
-            </Field>
+            <PasswordField
+              label="Current Password"
+              value={currentPassword}
+              onChange={setCurrentPassword}
+              placeholder="••••••••"
+            />
 
-            <Field label="New Password">
-              <input
-                required
-                type="password"
-                className={inputCls}
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="At least 6 characters"
-              />
-            </Field>
+            <PasswordField
+              label="New Password"
+              value={newPassword}
+              onChange={setNewPassword}
+              placeholder="At least 6 characters"
+            />
 
-            <Field label="Confirm New Password">
-              <input
-                required
-                type="password"
-                className={inputCls}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirm password"
-              />
-            </Field>
+            <PasswordField
+              label="Confirm New Password"
+              value={confirmPassword}
+              onChange={setConfirmPassword}
+              placeholder="Confirm password"
+            />
 
             {msg && (
               <div
@@ -1230,9 +1258,7 @@ function Login({ onSuccess }: { onSuccess: () => void }) {
               <Field label="Email">
                 <input required type="email" className={inputCls} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="admin@ahenkanacademy.com" />
               </Field>
-              <Field label="Password">
-                <input required type="password" className={inputCls} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
-              </Field>
+              <PasswordField label="Password" value={password} onChange={setPassword} placeholder="••••••••" />
             </div>
             {error && <p className="mt-3 text-sm font-semibold text-clay-500">{error}</p>}
             <button type="submit" disabled={busy} className="btn-gold mt-6 w-full disabled:opacity-60">
